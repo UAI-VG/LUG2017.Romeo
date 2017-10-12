@@ -1,0 +1,14 @@
+C:\Users\sebas\OneDrive\Documentos\Visual Studio 2017\Projects\Damas_2.0\Damas_2.0\bin\Debug\Damas_2.0.exe.config
+C:\Users\sebas\OneDrive\Documentos\Visual Studio 2017\Projects\Damas_2.0\Damas_2.0\bin\Debug\Damas_2.0.exe
+C:\Users\sebas\OneDrive\Documentos\Visual Studio 2017\Projects\Damas_2.0\Damas_2.0\bin\Debug\Damas_2.0.pdb
+C:\Users\sebas\OneDrive\Documentos\Visual Studio 2017\Projects\Damas_2.0\Damas_2.0\obj\Debug\Damas_2.0.csprojResolveAssemblyReference.cache
+C:\Users\sebas\OneDrive\Documentos\Visual Studio 2017\Projects\Damas_2.0\Damas_2.0\obj\Debug\Damas_2.0.csproj.CoreCompileInputs.cache
+C:\Users\sebas\OneDrive\Documentos\Visual Studio 2017\Projects\Damas_2.0\Damas_2.0\obj\Debug\Damas_2.0.exe
+C:\Users\sebas\OneDrive\Documentos\Visual Studio 2017\Projects\Damas_2.0\Damas_2.0\obj\Debug\Damas_2.0.pdb
+C:\Users\sebas\Desktop\Damas_2.0\Damas_2.0\bin\Debug\Damas_2.0.exe.config
+C:\Users\sebas\Desktop\Damas_2.0\Damas_2.0\bin\Debug\Damas_2.0.exe
+C:\Users\sebas\Desktop\Damas_2.0\Damas_2.0\bin\Debug\Damas_2.0.pdb
+C:\Users\sebas\Desktop\Damas_2.0\Damas_2.0\obj\Debug\Damas_2.0.csprojResolveAssemblyReference.cache
+C:\Users\sebas\Desktop\Damas_2.0\Damas_2.0\obj\Debug\Damas_2.0.csproj.CoreCompileInputs.cache
+C:\Users\sebas\Desktop\Damas_2.0\Damas_2.0\obj\Debug\Damas_2.0.exe
+C:\Users\sebas\Desktop\Damas_2.0\Damas_2.0\obj\Debug\Damas_2.0.pdb
