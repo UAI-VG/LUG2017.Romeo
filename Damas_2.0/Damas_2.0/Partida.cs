@@ -122,8 +122,16 @@ namespace Damas_2._0
                     {
                         foreach (Coordenada c in Ejemplo)
                         {
-                            Console.WriteLine("Fila: " + c.X + " " + "Columna: " + c.Y);
+                            Console.WriteLine("Fila: " + c.X + " " + "Columna: " + c.Y + " " + "(" + Ejemplo.IndexOf(c) + ")");
                         }
+
+                        Console.WriteLine();
+                        Console.WriteLine("A que posicion Mover? 0 / 1");
+
+                        int Jugada = int.Parse(Console.ReadLine());
+                        Coordenada Destino = Ejemplo[Jugada];
+
+                        Tablero.MoverPieza(Tablero.Grilla[Fila,Columna], Destino);
                         Turno = !Turno;
                     }
                     Console.ReadKey();

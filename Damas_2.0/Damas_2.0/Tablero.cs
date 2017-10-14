@@ -18,9 +18,12 @@ namespace Damas_2._0
             this.Ancho = Ancho;
         }
 
-        void MoverPieza(Pieza Pieza, Coordenada Destino)
+        public void MoverPieza(Pieza Pieza, Coordenada Destino)
         {
-            Pieza.PosicionInicial = Destino;
+            Grilla[Pieza.PosicionInicial.X, Pieza.PosicionInicial.Y] = new CasilleroVacio(null);
+            Grilla[Pieza.PosicionInicial.X, Pieza.PosicionInicial.Y].Icono = '·';
+            Grilla[Destino.X, Destino.Y] = new Ficha(Pieza.Jugador);
+            Grilla[Destino.X, Destino.Y].Icono = Pieza.Icono;
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Damas_2._0
 {
     class CasilleroVacio : Pieza
-    {
+    {    
         public CasilleroVacio(Jugador Jugador) : base(Jugador)
         {
         }
