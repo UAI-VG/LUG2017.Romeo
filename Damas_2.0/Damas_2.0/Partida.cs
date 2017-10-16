@@ -132,6 +132,14 @@ namespace Damas_2._0
                         Coordenada Destino = Ejemplo[Jugada];
 
                         Tablero.MoverPieza(Tablero.Grilla[Fila,Columna], Destino);
+
+                        foreach (Coordenada c in Ejemplo)
+                        {
+                            c.PiezasComidas.Clear();
+                        }
+
+                        Ejemplo.Clear();
+
                         Turno = !Turno;
                     }
                     Console.ReadKey();

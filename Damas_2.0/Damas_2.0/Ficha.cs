@@ -26,21 +26,42 @@ namespace Damas_2._0
             if (PosicionInicial.Y + 1 <= Tablero.Ancho - 1 && PosicionInicial.X + Orientacion <= Tablero.Alto)
             {
                 Coordenada Movimiento = new Coordenada(PosicionInicial.X + Orientacion, PosicionInicial.Y + 1);
+
                 if (Tablero.Grilla[Movimiento.X, Movimiento.Y].Icono == '·')
                 {
                     PosiblesMovimientos.Add(Movimiento);
                 }
-                else { }
+                else if (Tablero.Grilla[Movimiento.X, Movimiento.Y].Icono != Icono && Tablero.Grilla[Movimiento.X, Movimiento.Y].Icono != '·')
+                {
+                    if (Tablero.Grilla[Movimiento.X + Orientacion, Movimiento.Y + 1].Icono == '·')
+                    {
+                        Movimiento.PiezasComidas.Add(Tablero.Grilla[Movimiento.X, Movimiento.Y]);
+                        Movimiento.X = PosicionInicial.X + Orientacion * 2;
+                        Movimiento.Y = PosicionInicial.Y + 2;
+                        PosiblesMovimientos.Add(Movimiento);
+                    }
+                }
             }
 
             if (PosicionInicial.Y - 1 >= 0 && PosicionInicial.X + Orientacion <= Tablero.Alto)
             {
                 Coordenada Movimiento = new Coordenada(PosicionInicial.X + Orientacion, PosicionInicial.Y - 1);
+
                 if (Tablero.Grilla[Movimiento.X, Movimiento.Y].Icono == '·')
                 {
                     PosiblesMovimientos.Add(Movimiento);
                 }
-                else { }       
+                else if (Tablero.Grilla[Movimiento.X, Movimiento.Y].Icono != Icono && Tablero.Grilla[Movimiento.X, Movimiento.Y].Icono != '·')
+                {
+                    if (Tablero.Grilla[Movimiento.X + Orientacion, Movimiento.Y - 1].Icono == '·')
+                    {
+                        Movimiento.PiezasComidas.Add(Tablero.Grilla[Movimiento.X, Movimiento.Y]);
+                        Movimiento.X = PosicionInicial.X + Orientacion * 2;
+                        Movimiento.Y = PosicionInicial.Y - 2;
+                        PosiblesMovimientos.Add(Movimiento);
+                    }
+                }
+
             }
             return PosiblesMovimientos;
         }

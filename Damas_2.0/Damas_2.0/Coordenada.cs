@@ -10,7 +10,7 @@ namespace Damas_2._0
     {
         public int X { get; set; }
         public int Y { get; set; }
-        public bool Valido { get; set; }
+        public List<Pieza> PiezasComidas { get; set; } = new List<Pieza>();
 
         public Coordenada(int X, int Y)
         {
