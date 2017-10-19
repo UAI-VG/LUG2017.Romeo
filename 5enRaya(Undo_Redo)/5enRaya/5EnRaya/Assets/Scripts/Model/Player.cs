@@ -14,9 +14,11 @@ public class Player
 
     public string Name { get { return name; } }
 
-    public void Play(int column, Board board)
+    public Command Play(int column, Board board)
     {
         Token token = new Token(this);
-        Command Jugada = new Command(token, column);
+        Command Move = new Command(token, column, board);
+
+        return Move;
     }
 }

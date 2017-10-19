@@ -5,19 +5,20 @@ using UnityEngine;
 public class Command
 {
     private Token[] tokens;
-    public Board Tablero;
-    private Token token;
-    private int column;
+    public Board board;
+    public Token token { get; set; }
+    public int column { get; set; }
 
-    public Command(Token token, int column)
+    public Command(Token token, int column, Board board)
     {
         this.token = token;
         this.column = column;
+        this.board = board;
     }
 
     public void Do()
     {
-        Tablero.Put(token, column);
+        board.Put(token, column);
     }
 
     public void Undo()

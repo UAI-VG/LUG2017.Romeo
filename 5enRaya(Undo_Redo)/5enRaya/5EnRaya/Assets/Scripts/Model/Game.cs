@@ -26,9 +26,9 @@ public class Game
     public void Undo()
     {
         if (doneCommands.Count <= 0) return;
-        Command Jugada = doneCommands.Pop();
-        Jugada.Undo();
-        UndoneCommands.Push(Jugada);
+        Command Move = doneCommands.Pop();
+        Move.Undo();
+        UndoneCommands.Push(Move);
     }
 
     public void Redo()
@@ -61,7 +61,8 @@ public class Game
     {
         try
         {
-            CurrentPlayer.Play(column, board);
+            Do(CurrentPlayer.Play(column, board));
+
             NextTurn();
         }
         catch (InvalidOperationException)
