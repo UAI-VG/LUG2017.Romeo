@@ -1,0 +1,7 @@
+c:\users\sebas\onedrive\documentos\visual studio 2017\Projects\Ajedrez 2.0\Ajedrez 2.0\bin\Debug\Ajedrez 2.0.exe.config
+c:\users\sebas\onedrive\documentos\visual studio 2017\Projects\Ajedrez 2.0\Ajedrez 2.0\bin\Debug\Ajedrez 2.0.exe
+c:\users\sebas\onedrive\documentos\visual studio 2017\Projects\Ajedrez 2.0\Ajedrez 2.0\bin\Debug\Ajedrez 2.0.pdb
+c:\users\sebas\onedrive\documentos\visual studio 2017\Projects\Ajedrez 2.0\Ajedrez 2.0\obj\Debug\Ajedrez 2.0.csprojResolveAssemblyReference.cache
+c:\users\sebas\onedrive\documentos\visual studio 2017\Projects\Ajedrez 2.0\Ajedrez 2.0\obj\Debug\Ajedrez 2.0.exe
+c:\users\sebas\onedrive\documentos\visual studio 2017\Projects\Ajedrez 2.0\Ajedrez 2.0\obj\Debug\Ajedrez 2.0.pdb
+C:\Users\sebas\OneDrive\Documentos\Visual Studio 2017\Projects\Ajedrez 2.0\Ajedrez 2.0\obj\Debug\Ajedrez 2.0.csproj.CoreCompileInputs.cache
