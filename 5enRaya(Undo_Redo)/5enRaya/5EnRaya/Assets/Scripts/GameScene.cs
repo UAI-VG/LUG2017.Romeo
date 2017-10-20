@@ -9,6 +9,7 @@ public class GameScene : MonoBehaviour
     public GameObject gridPanel;
     public Text turnText;
     public Button Undobtn;
+    public Button Redobtn;
 
     public Color[] playerColors;
 
@@ -40,6 +41,10 @@ public class GameScene : MonoBehaviour
         game.Undo();
     }
 
+    void TaskOnClick2()
+    {
+        game.Redo();
+    }
 
     private void InitializeButtons()
     {
@@ -52,6 +57,7 @@ public class GameScene : MonoBehaviour
             button.onClick.AddListener(() => game.Play(column));
         }
 
+        Redobtn.onClick.AddListener(TaskOnClick2);
         Undobtn.onClick.AddListener(TaskOnClick);
     }
 
