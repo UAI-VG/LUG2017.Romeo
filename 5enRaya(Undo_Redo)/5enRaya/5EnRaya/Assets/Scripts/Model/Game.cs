@@ -38,6 +38,7 @@ public class Game
         Command Jugada = UndoneCommands.Pop();
         Jugada.Do();
         doneCommands.Push(Jugada);
+        NextTurn();
     }
 
     //_________________________________________________________________________________

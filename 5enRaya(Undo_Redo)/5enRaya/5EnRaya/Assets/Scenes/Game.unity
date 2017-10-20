@@ -1867,7 +1867,7 @@ MonoBehaviour:
   m_ChildAlignment: 7
   m_StartCorner: 2
   m_StartAxis: 0
-  m_CellSize: {x: 126.88489, y: 126.88489}
+  m_CellSize: {x: 44.737095, y: 44.737095}
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 2
   m_ConstraintCount: 6
@@ -2887,8 +2887,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 121
-    m_Right: 121
+    m_Left: 229
+    m_Right: 229
     m_Top: 15
     m_Bottom: 15
   m_ChildAlignment: 4
@@ -5296,6 +5296,8 @@ MonoBehaviour:
   gridButtonsPanel: {fileID: 1394298184}
   gridPanel: {fileID: 893251230}
   turnText: {fileID: 833433646}
+  Undobtn: {fileID: 1650090411}
+  Redobtn: {fileID: 692099550}
   playerColors:
   - {r: 1, g: 0, b: 0, a: 1}
   - {r: 0.15862082, g: 0, b: 1, a: 1}
