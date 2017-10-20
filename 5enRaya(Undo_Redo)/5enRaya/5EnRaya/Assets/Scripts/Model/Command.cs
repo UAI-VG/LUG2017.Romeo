@@ -23,7 +23,6 @@ public class Command
 
     public void Undo()
     {
-
-
+        board.UnPuT(column);
     }
 }

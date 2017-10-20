@@ -8,6 +8,7 @@ public class GameScene : MonoBehaviour
     public GameObject gridButtonsPanel;
     public GameObject gridPanel;
     public Text turnText;
+    public Button Undobtn;
 
     public Color[] playerColors;
 
@@ -33,6 +34,13 @@ public class GameScene : MonoBehaviour
         game = new Game(board, players);
     }
 
+
+    void TaskOnClick()
+    {
+        game.Undo();
+    }
+
+
     private void InitializeButtons()
     {
         for (int i = 0; i < gridButtonsPanel.transform.childCount; i++)
@@ -43,6 +51,8 @@ public class GameScene : MonoBehaviour
             int column = i; // INFO(Richo): Variable is captured by closure below
             button.onClick.AddListener(() => game.Play(column));
         }
+
+        Undobtn.onClick.AddListener(TaskOnClick);
     }
 
     void Update()

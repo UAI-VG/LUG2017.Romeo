@@ -29,6 +29,7 @@ public class Game
         Command Move = doneCommands.Pop();
         Move.Undo();
         UndoneCommands.Push(Move);
+        PreviousTurn();
     }
 
     public void Redo()
@@ -62,7 +63,6 @@ public class Game
         try
         {
             Do(CurrentPlayer.Play(column, board));
-
             NextTurn();
         }
         catch (InvalidOperationException)
@@ -74,5 +74,10 @@ public class Game
     private void NextTurn()
     {
         turn = (turn + 1) % players.Length;
+    }
+
+    private void PreviousTurn()
+    {
+        turn = ((turn - 1) + players.Length) % players.Length;
     }
 }

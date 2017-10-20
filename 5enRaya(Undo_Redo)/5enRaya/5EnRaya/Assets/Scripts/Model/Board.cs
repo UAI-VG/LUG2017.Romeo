@@ -19,6 +19,7 @@ public class Board
     public int Width { get { return width; } }
     public int Height { get { return height; } }
 
+
     public void Put(Token token, int column)
     {
         for (int row = 0; row < height; row++)
@@ -38,6 +39,20 @@ public class Board
         return tokens[index];
     }
     
+    public void UnPuT(int column)
+    {
+        for (int row = (height -1); row >= 0; row--)
+        {
+            int index = IndexOf(column, row);
+            if (tokens[index] != null)
+            {
+                tokens[index] = null;
+                return;
+            }
+        }
+
+    }
+
     private int IndexOf(int column, int row)
     {
         return column + row * width;
