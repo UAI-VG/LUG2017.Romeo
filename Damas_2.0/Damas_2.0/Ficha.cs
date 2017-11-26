@@ -9,6 +9,8 @@ namespace Damas_2._0
     class Ficha : Pieza
     {
         private int Orientacion;
+        private Tablero TableroClonado;
+        private Coordenada NuevaPosInicial;
 
         public Ficha(Jugador Jugador) : base(Jugador)
         {
@@ -38,6 +40,15 @@ namespace Damas_2._0
                         Movimiento.PiezasComidas.Add(Tablero.Grilla[Movimiento.X, Movimiento.Y]);
                         Movimiento.X = PosicionInicial.X + Orientacion * 2;
                         Movimiento.Y = PosicionInicial.Y + 2;
+
+                        TableroClonado = new Tablero(Tablero.Alto, Tablero.Ancho);
+                        TableroClonado = Tablero;
+                        TableroClonado.MoverPieza(this, Movimiento);
+                    
+
+                        Movimiento = CalcularNuevoMov(TableroClonado);
+
+                        if (Movimiento != null)
                         PosiblesMovimientos.Add(Movimiento);
                     }
                 }
@@ -58,12 +69,65 @@ namespace Damas_2._0
                         Movimiento.PiezasComidas.Add(Tablero.Grilla[Movimiento.X, Movimiento.Y]);
                         Movimiento.X = PosicionInicial.X + Orientacion * 2;
                         Movimiento.Y = PosicionInicial.Y - 2;
-                        PosiblesMovimientos.Add(Movimiento);
+
+                        TableroClonado = new Tablero(Tablero.Alto, Tablero.Ancho);
+                        TableroClonado = Tablero;
+                        TableroClonado.MoverPieza(this, Movimiento);
+
+                        NuevaPosInicial = new Coordenada(Movimiento.X, Movimiento.Y);
+
+                        Movimiento = CalcularNuevoMov(TableroClonado);
+
+                        if (Movimiento != null)
+                            PosiblesMovimientos.Add(Movimiento);
                     }
                 }
 
             }
             return PosiblesMovimientos;
+        }
+
+
+
+        public Coordenada CalcularNuevoMov(Tablero Tablero)
+        {
+            Coordenada NuevoMovimiento = new Coordenada(NuevaPosInicial.X + Orientacion, NuevaPosInicial.Y + 1);
+
+            if (Tablero.Grilla[NuevoMovimiento.X, NuevoMovimiento.Y].Icono != Icono && Tablero.Grilla[NuevoMovimiento.X, NuevoMovimiento.Y].Icono != '·')
+            {
+                if (Tablero.Grilla[NuevoMovimiento.X + Orientacion, NuevoMovimiento.Y - 1].Icono == '·')
+                {
+                    NuevoMovimiento.PiezasComidas.Add(Tablero.Grilla[NuevoMovimiento.X, NuevoMovimiento.Y]);
+                    NuevoMovimiento.X = PosicionInicial.X + Orientacion * 2;
+                    NuevoMovimiento.Y = PosicionInicial.Y - 2;              
+                }
+                else
+                {
+                    NuevoMovimiento = null;
+                }
+            }
+            return NuevoMovimiento;
+        }
+
+
+        public Coordenada CalcularNuevoMov2(Tablero Tablero)
+        {
+            Coordenada NuevoMovimiento = new Coordenada(NuevaPosInicial.X + Orientacion, NuevaPosInicial.Y - 1);
+
+            if (Tablero.Grilla[NuevoMovimiento.X, NuevoMovimiento.Y].Icono != Icono && Tablero.Grilla[NuevoMovimiento.X, NuevoMovimiento.Y].Icono != '·')
+            {
+                if (Tablero.Grilla[NuevoMovimiento.X + Orientacion, NuevoMovimiento.Y - 1].Icono == '·')
+                {
+                    NuevoMovimiento.PiezasComidas.Add(Tablero.Grilla[NuevoMovimiento.X, NuevoMovimiento.Y]);
+                    NuevoMovimiento.X = PosicionInicial.X + Orientacion * 2;
+                    NuevoMovimiento.Y = PosicionInicial.Y - 2; 
+                }
+                else
+                {
+                    NuevoMovimiento = null;
+                }
+            }
+            return NuevoMovimiento;
         }
     }
 }

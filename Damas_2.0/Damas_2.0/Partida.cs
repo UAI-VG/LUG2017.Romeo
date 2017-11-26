@@ -154,9 +154,10 @@ namespace Damas_2._0
                     Jugar();
                 }
             }
-            catch
+            catch (Exception ex)
             {
                 Console.WriteLine("ERROR");
+                Console.WriteLine(ex.ToString());
                 Console.ReadKey();
                 Jugar();
             }
