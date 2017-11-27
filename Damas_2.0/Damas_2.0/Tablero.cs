@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Damas_2._0
 {
-    public class Tablero
+    public class Tablero : ICloneable
     {
         public int Alto { get; set; }
         public int Ancho { get; set; }
@@ -20,7 +20,7 @@ namespace Damas_2._0
         }
 
         public void MoverPieza(Pieza Pieza, Coordenada Destino)
-        {       
+        {
             Grilla[Destino.X, Destino.Y] = new Ficha(Pieza.Jugador);
             Grilla[Destino.X, Destino.Y].PosicionInicial = Destino;
             Grilla[Destino.X, Destino.Y].Icono = Pieza.Icono;
@@ -33,6 +33,11 @@ namespace Damas_2._0
                 Grilla[p.PosicionInicial.X, p.PosicionInicial.Y] = new CasilleroVacio(null);
                 Grilla[p.PosicionInicial.X, p.PosicionInicial.Y].Icono = '·';
             }
+        }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
         }
     }
 }

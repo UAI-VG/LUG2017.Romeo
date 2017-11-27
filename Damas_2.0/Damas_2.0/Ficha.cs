@@ -44,7 +44,19 @@ namespace Damas_2._0
                         PosiblesMovimientos.Add(Movimiento);
 
                         TableroClonado = new Tablero(Tablero.Alto, Tablero.Ancho);
-                        TableroClonado = Tablero;
+                        TableroClonado.Grilla = new Pieza[Tablero.Alto,Tablero.Ancho];
+                        TableroClonado = (Tablero)Tablero.Clone();
+
+                    /*    for (int f = 0; f < Tablero.Alto; f++)
+                        {
+                            for (int c = 0; c < Tablero.Alto; c++)
+                            {
+                                TableroClonado.Grilla[f, c] = new Ficha(Tablero.Grilla[f,c].Jugador);
+                                TableroClonado.Grilla[f, c].PosicionInicial = Tablero.Grilla[f, c].PosicionInicial;
+                            }
+                        }
+                        */
+
                         TableroClonado.MoverPieza(this, Movimiento);
 
                         NuevaPosInicial = new Coordenada(Movimiento.X, Movimiento.Y);
@@ -75,7 +87,18 @@ namespace Damas_2._0
                         PosiblesMovimientos.Add(Movimiento);
 
                         TableroClonado = new Tablero(Tablero.Alto, Tablero.Ancho);
-                        TableroClonado = Tablero;
+                        TableroClonado.Grilla = new Pieza[Tablero.Alto, Tablero.Ancho];
+                        TableroClonado = (Tablero)Tablero.Clone();
+
+                        /*   for (int f = 0; f < Tablero.Alto; f++)
+                           {
+                               for (int c = 0; c < Tablero.Alto; c++)
+                               {
+                                   TableroClonado.Grilla[f, c] = new Ficha(Tablero.Grilla[f, c].Jugador);
+                                   TableroClonado.Grilla[f, c].PosicionInicial = Tablero.Grilla[f, c].PosicionInicial;
+                               }
+                           }
+                           */
 
                         TableroClonado.MoverPieza(this, Movimiento);
 
