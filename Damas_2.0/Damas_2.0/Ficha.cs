@@ -80,7 +80,7 @@ namespace Damas_2._0
                         TableroClonado.MoverPieza(this, Movimiento);
 
                         NuevaPosInicial = new Coordenada(Movimiento.X, Movimiento.Y);
-                        NuevoMovimiento = new Coordenada(CalcularNuevoMov(TableroClonado).X, CalcularNuevoMov(TableroClonado).Y);
+                        NuevoMovimiento = new Coordenada(CalcularNuevoMov2(TableroClonado).X, CalcularNuevoMov2(TableroClonado).Y);
 
                         Movimiento = CalcularNuevoMov2(TableroClonado);
 

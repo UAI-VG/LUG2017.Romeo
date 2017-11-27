@@ -19,6 +19,7 @@ namespace Damas_2._0
             Turno = true;
             Tablero.Grilla = new Pieza[Tablero.Alto, Tablero.Ancho];
 
+            /*
             for (int f = 0; f < Tablero.Alto; f++)
             {
                 for (int c = 0; c < Tablero.Ancho; c +=2)
@@ -67,6 +68,27 @@ namespace Damas_2._0
                     }
                 }               
             }
+
+    */
+            for (int f = 0; f < Tablero.Alto; f++)
+            {
+                for (int c = 0; c < Tablero.Alto; c++)
+                {
+                    Tablero.Grilla[f, c] = new CasilleroVacio(null);
+                    Tablero.Grilla[f, c].Icono = '·';
+                }
+            }
+
+            Tablero.Grilla[5, 0] = new Ficha(Jugador2);
+            Tablero.Grilla[5, 0].PosicionInicial = new Coordenada(5, 0);
+            Jugador2.Piezas.Add(Tablero.Grilla[5, 0]);
+            Tablero.Grilla[4, 1] = new Ficha(Jugador1);
+            Tablero.Grilla[2, 3] = new Ficha(Jugador1);
+            Tablero.Grilla[4, 1].PosicionInicial = new Coordenada(4, 1);
+            Tablero.Grilla[2, 3].PosicionInicial = new Coordenada(2, 3);
+            Jugador1.Piezas.Add(Tablero.Grilla[4, 1]);
+            Jugador1.Piezas.Add(Tablero.Grilla[2, 3]);
+
 
             foreach (Pieza p in Jugador1.Piezas)
             {
