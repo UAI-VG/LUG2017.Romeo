@@ -55,6 +55,8 @@ namespace Damas_2._0
                         try
                         {
                             NuevoMovimiento = new Coordenada(CalcularNuevoMov(TableroClonado).X, CalcularNuevoMov(TableroClonado).Y);
+                            NuevoMovimiento.PiezasComidas = CalcularNuevoMov(TableroClonado).PiezasComidas;
+                            NuevoMovimiento.PiezasComidas.Add(Movimiento.PiezasComidas[0]);
                             PosiblesMovimientos.Add(NuevoMovimiento);
                         }
                         catch
@@ -94,6 +96,8 @@ namespace Damas_2._0
                         try
                         {
                             NuevoMovimiento = new Coordenada(CalcularNuevoMov2(TableroClonado).X, CalcularNuevoMov2(TableroClonado).Y);
+                            NuevoMovimiento.PiezasComidas = CalcularNuevoMov2(TableroClonado).PiezasComidas;
+                            NuevoMovimiento.PiezasComidas.Add(Movimiento.PiezasComidas[0]);
                             PosiblesMovimientos.Add(NuevoMovimiento);
                         }
                         catch
@@ -119,10 +123,9 @@ namespace Damas_2._0
                 if (Tablero.Grilla[NuevoMovimiento.X + Orientacion, NuevoMovimiento.Y + 1].Icono == '·')
                 {
                     NuevoMovimiento.PiezasComidas.Add(Tablero.Grilla[NuevoMovimiento.X, NuevoMovimiento.Y]);
+                    NuevoMovimiento.PiezasComidas.Add(Tablero.Grilla[NuevoMovimiento.X, NuevoMovimiento.Y]);
                     NuevoMovimiento.X = NuevaPosInicial.X + Orientacion * 2;
-                    NuevoMovimiento.Y = NuevaPosInicial.Y + 2;
-
-                    
+                    NuevoMovimiento.Y = NuevaPosInicial.Y + 2;        
                 }   
             }
             else
@@ -142,10 +145,9 @@ namespace Damas_2._0
                 if (Tablero.Grilla[NuevoMovimiento.X + Orientacion, NuevoMovimiento.Y - 1].Icono == '·')
                 {
                     NuevoMovimiento.PiezasComidas.Add(Tablero.Grilla[NuevoMovimiento.X, NuevoMovimiento.Y]);
+                    NuevoMovimiento.PiezasComidas.Add(Tablero.Grilla[NuevoMovimiento.X, NuevoMovimiento.Y]);
                     NuevoMovimiento.X = NuevaPosInicial.X + Orientacion * 2;
                     NuevoMovimiento.Y = NuevaPosInicial.Y - 2;
-
-                    
                 }         
             }
             else
