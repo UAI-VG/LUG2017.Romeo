@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Damas_2._0
 {
     [Serializable]
-    public class Tablero : ICloneable
+    public class Tablero
     {
         public int Alto { get; set; }
         public int Ancho { get; set; }
@@ -35,11 +35,6 @@ namespace Damas_2._0
                 Grilla[p.PosicionInicial.X, p.PosicionInicial.Y] = new CasilleroVacio(null);
                 Grilla[p.PosicionInicial.X, p.PosicionInicial.Y].Icono = '·';
             }
-        }
-
-        public object Clone()
-        {
-            return this.MemberwiseClone();
         }
     }
 }

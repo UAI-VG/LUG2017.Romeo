@@ -16,7 +16,7 @@ namespace Damas_2._0
         public Ficha(Jugador Jugador) : base(Jugador)
         {
         }
-  
+
         public override List<Coordenada> CalcularMov(Tablero Tablero)
         {
             List<Coordenada> PosiblesMovimientos = new List<Coordenada>();
@@ -30,6 +30,7 @@ namespace Damas_2._0
             {
                 Coordenada Movimiento = new Coordenada(PosicionInicial.X + Orientacion, PosicionInicial.Y + 1);
                 Coordenada NuevoMovimiento;
+                Coordenada NuevoMovimiento2;
 
                 if (Tablero.Grilla[Movimiento.X, Movimiento.Y].Icono == '·')
                 {
@@ -58,11 +59,21 @@ namespace Damas_2._0
                             NuevoMovimiento.PiezasComidas = CalcularNuevoMov(TableroClonado).PiezasComidas;
                             NuevoMovimiento.PiezasComidas.Add(Movimiento.PiezasComidas[0]);
                             PosiblesMovimientos.Add(NuevoMovimiento);
+
+                            NuevaPosInicial.X = NuevoMovimiento.X;
+                            NuevaPosInicial.Y = NuevoMovimiento.Y;
+
+                            NuevoMovimiento2 = new Coordenada(CalcularNuevoMov(TableroClonado).X, CalcularNuevoMov(TableroClonado).Y);
+                            NuevoMovimiento2.PiezasComidas = CalcularNuevoMov(TableroClonado).PiezasComidas;
+                            NuevoMovimiento2.PiezasComidas.Add(Movimiento.PiezasComidas[0]);
+                            NuevoMovimiento2.PiezasComidas.Add(NuevoMovimiento.PiezasComidas[0]);
+                            PosiblesMovimientos.Add(NuevoMovimiento2);
                         }
                         catch
                         {
                             return PosiblesMovimientos;
                         }
+
                     }
                 }
             }
@@ -71,6 +82,7 @@ namespace Damas_2._0
             {
                 Coordenada Movimiento = new Coordenada(PosicionInicial.X + Orientacion, PosicionInicial.Y - 1);
                 Coordenada NuevoMovimiento;
+                Coordenada NuevoMovimiento2;
 
                 if (Tablero.Grilla[Movimiento.X, Movimiento.Y].Icono == '·')
                 {
@@ -99,6 +111,15 @@ namespace Damas_2._0
                             NuevoMovimiento.PiezasComidas = CalcularNuevoMov2(TableroClonado).PiezasComidas;
                             NuevoMovimiento.PiezasComidas.Add(Movimiento.PiezasComidas[0]);
                             PosiblesMovimientos.Add(NuevoMovimiento);
+
+                            NuevaPosInicial.X = NuevoMovimiento.X;
+                            NuevaPosInicial.Y = NuevoMovimiento.Y;
+
+                            NuevoMovimiento2 = new Coordenada(CalcularNuevoMov2(TableroClonado).X, CalcularNuevoMov2(TableroClonado).Y);
+                            NuevoMovimiento2.PiezasComidas = CalcularNuevoMov2(TableroClonado).PiezasComidas;
+                            NuevoMovimiento2.PiezasComidas.Add(Movimiento.PiezasComidas[0]);
+                            NuevoMovimiento2.PiezasComidas.Add(NuevoMovimiento.PiezasComidas[0]);
+                            PosiblesMovimientos.Add(NuevoMovimiento2);
                         }
                         catch
                         {
