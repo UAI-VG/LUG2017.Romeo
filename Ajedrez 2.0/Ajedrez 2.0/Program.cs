@@ -183,19 +183,19 @@ namespace Ajedrez_2._0
             //Coordenada es una clase que cree yo que tiene 2 int (x,y) y un puntaje, dependiendo de a que pieza aloje dicha coordenada, su puntaje va a ser uno u otro
             foreach (Coordenada c in ListaBlanca)
             {
-                if (Tablero[c.X, c.Y] is Reina)
+                if (Tablero[c.X, c.Y].Img == 'r')
                 {
                     c.Puntaje += 9;
                 }
-                else if (Tablero[c.X, c.Y] is Torre)
+                else if (Tablero[c.X, c.Y].Img == 'T')
                 {
                     c.Puntaje += 5;
                 }
-                else if (Tablero[c.X, c.Y] is Alfil || Tablero[c.X, c.Y] is Caballo)
+                else if (Tablero[c.X, c.Y].Img == 'A' || Tablero[c.X, c.Y].Img == 'C')
                 {
                     c.Puntaje += 3;
                 }
-                else if (Tablero[c.X, c.Y] is Peon)
+                else if (Tablero[c.X, c.Y].Img == 'P')
                 {
                     c.Puntaje += 1;
                 }
@@ -207,19 +207,19 @@ namespace Ajedrez_2._0
 
             foreach (Coordenada c in ListaNegra) //Lo mismo pero en la otra lista
             {
-                if (Tablero[c.X, c.Y] is Reina)
+                if (Tablero[c.X, c.Y].Img == 'r')
                 {
                     c.Puntaje += 9;
                 }
-                else if (Tablero[c.X, c.Y] is Torre)
+                else if (Tablero[c.X, c.Y].Img == 'T')
                 {
                     c.Puntaje += 5;
                 }
-                else if (Tablero[c.X, c.Y] is Alfil || Tablero[c.X, c.Y] is Caballo)
+                else if (Tablero[c.X, c.Y].Img == 'A' || Tablero[c.X, c.Y].Img == 'C')
                 {
                     c.Puntaje += 3;
                 }
-                else if (Tablero[c.X, c.Y] is Peon)
+                else if (Tablero[c.X, c.Y].Img == 'P')
                 {
                     c.Puntaje += 1;
                 }
@@ -262,7 +262,7 @@ namespace Ajedrez_2._0
                 else if (c.X == 5) letra = 'f';
                 else if (c.X == 6) letra = 'g';
                 else if (c.X == 7) letra = 'h';
-                Console.WriteLine(letra + c.Y.ToString());
+                Console.WriteLine(letra + c.Y.ToString() + " Puntaje: " + c.Puntaje);
             }
 
 
@@ -284,7 +284,7 @@ namespace Ajedrez_2._0
                 else if (c.X == 5) letra = 'f';
                 else if (c.X == 6) letra = 'g';
                 else if (c.X == 7) letra = 'h';
-                Console.WriteLine(letra + c.Y.ToString());
+                Console.WriteLine(letra + c.Y.ToString() + " Puntaje: "+ c.Puntaje);
             }
         }
 
@@ -401,6 +401,7 @@ namespace Ajedrez_2._0
                 MostrarTablero();//Se muestra el array con las piezas actuales
                 PonerPieza();//Se pide poner una pieza nueva
                 MostrarTablero();//Muestra el tablero con la ultima pieza agregada incluida
+                Puntuar(MovPosiblesBlancos, MovPosiblesNegros);
                 MostrarMovimientos(MovPosiblesBlancos, MovPosiblesNegros);//Muestra ambas listas de movimientos posibles
 
                 Console.WriteLine();

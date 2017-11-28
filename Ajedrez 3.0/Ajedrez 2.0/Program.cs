@@ -534,6 +534,7 @@ namespace Ajedrez_2._0
             {
                 UbicarPierzas();
                 MostrarTablero();
+                Puntuar(MovPosiblesBlancos, MovPosiblesNegros);
                 Console.WriteLine();
                 Console.WriteLine("Terminar? (s) Pasar al menu Undo/Redo / (n)Pasar Turno"); //Loopea segun la respuesta
                 Turno = !Turno;
