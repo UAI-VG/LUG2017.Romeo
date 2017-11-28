@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Damas_2._0
 {
+    [Serializable]
     public class Jugador
     {
         public List<Pieza> Piezas { get; set; } = new List<Pieza>();

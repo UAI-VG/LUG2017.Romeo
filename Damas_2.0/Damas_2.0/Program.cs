@@ -12,6 +12,7 @@ namespace Damas_2._0
 
         static void Main(string[] args)
         {
+
             Juego.CrearPartida();
 
             while (true)

@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CasilleroVacio.cs" />
+    <Compile Include="Clonador.cs" />
     <Compile Include="Coordenada.cs" />
     <Compile Include="Dama.cs" />
     <Compile Include="Ficha.cs" />

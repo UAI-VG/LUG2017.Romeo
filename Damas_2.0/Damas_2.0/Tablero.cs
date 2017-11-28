@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace Damas_2._0
 {
+    [Serializable]
     public class Tablero : ICloneable
     {
         public int Alto { get; set; }
         public int Ancho { get; set; }
         public Pieza[,] Grilla { get; set; }
         public List<Pieza> PiezasComidas { get; set; } = new List<Pieza>();
+        public Clonador Clonador = new Clonador();
 
         public Tablero(int Alto, int Ancho)
         {

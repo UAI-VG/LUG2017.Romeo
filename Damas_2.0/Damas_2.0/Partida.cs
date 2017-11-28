@@ -79,15 +79,18 @@ namespace Damas_2._0
                 }
             }
 
-            Tablero.Grilla[5, 0] = new Ficha(Jugador2);
-            Tablero.Grilla[5, 0].PosicionInicial = new Coordenada(5, 0);
-            Jugador2.Piezas.Add(Tablero.Grilla[5, 0]);
-            Tablero.Grilla[4, 1] = new Ficha(Jugador1);
-            Tablero.Grilla[2, 3] = new Ficha(Jugador1);
-            Tablero.Grilla[4, 1].PosicionInicial = new Coordenada(4, 1);
-            Tablero.Grilla[2, 3].PosicionInicial = new Coordenada(2, 3);
-            Jugador1.Piezas.Add(Tablero.Grilla[4, 1]);
-            Jugador1.Piezas.Add(Tablero.Grilla[2, 3]);
+            Tablero.Grilla[7, 0] = new Ficha(Jugador2);
+            Tablero.Grilla[7, 0].PosicionInicial = new Coordenada(7, 0);
+            Jugador2.Piezas.Add(Tablero.Grilla[7, 0]);
+            Tablero.Grilla[6, 1] = new Ficha(Jugador1);
+            Tablero.Grilla[4, 3] = new Ficha(Jugador1);
+            Tablero.Grilla[2, 5] = new Ficha(Jugador1);
+            Tablero.Grilla[6, 1].PosicionInicial = new Coordenada(6, 1);
+            Tablero.Grilla[4, 3].PosicionInicial = new Coordenada(4, 3);
+            Tablero.Grilla[2, 5].PosicionInicial = new Coordenada(2, 5);
+            Jugador1.Piezas.Add(Tablero.Grilla[2, 5]);
+            Jugador1.Piezas.Add(Tablero.Grilla[6, 1]);
+            Jugador1.Piezas.Add(Tablero.Grilla[4, 3]);
 
 
             foreach (Pieza p in Jugador1.Piezas)
@@ -144,6 +147,7 @@ namespace Damas_2._0
                     {
                         foreach (Coordenada c in Ejemplo)
                         {
+                            if (c != null)
                             Console.WriteLine("Fila: " + c.X + " " + "Columna: " + c.Y + " " + "(" + Ejemplo.IndexOf(c) + ")");
                         }
 

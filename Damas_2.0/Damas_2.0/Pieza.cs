@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Damas_2._0
 {
+    [Serializable]
     public abstract class Pieza
     {
         public char Icono { get; set; }

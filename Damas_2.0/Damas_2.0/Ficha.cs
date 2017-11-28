@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Damas_2._0
 {
+    [Serializable]
     class Ficha : Pieza
     {
         private int Orientacion;
@@ -15,7 +16,7 @@ namespace Damas_2._0
         public Ficha(Jugador Jugador) : base(Jugador)
         {
         }
-
+  
         public override List<Coordenada> CalcularMov(Tablero Tablero)
         {
             List<Coordenada> PosiblesMovimientos = new List<Coordenada>();
@@ -44,26 +45,22 @@ namespace Damas_2._0
                         PosiblesMovimientos.Add(Movimiento);
 
                         TableroClonado = new Tablero(Tablero.Alto, Tablero.Ancho);
-                        TableroClonado.Grilla = new Pieza[Tablero.Alto,Tablero.Ancho];
-                        TableroClonado = (Tablero)Tablero.Clone();
-
-                    /*    for (int f = 0; f < Tablero.Alto; f++)
-                        {
-                            for (int c = 0; c < Tablero.Alto; c++)
-                            {
-                                TableroClonado.Grilla[f, c] = new Ficha(Tablero.Grilla[f,c].Jugador);
-                                TableroClonado.Grilla[f, c].PosicionInicial = Tablero.Grilla[f, c].PosicionInicial;
-                            }
-                        }
-                        */
+                        TableroClonado.Grilla = new Pieza[Tablero.Alto, Tablero.Ancho];
+                        TableroClonado = TableroClonado.Clonador.Clonar(Tablero);
 
                         TableroClonado.MoverPieza(this, Movimiento);
 
                         NuevaPosInicial = new Coordenada(Movimiento.X, Movimiento.Y);
-                        NuevoMovimiento = new Coordenada(CalcularNuevoMov(TableroClonado).X, CalcularNuevoMov(TableroClonado).Y);
 
-                        if (NuevoMovimiento != null)
-                        PosiblesMovimientos.Add(NuevoMovimiento);
+                        try
+                        {
+                            NuevoMovimiento = new Coordenada(CalcularNuevoMov(TableroClonado).X, CalcularNuevoMov(TableroClonado).Y);
+                            PosiblesMovimientos.Add(NuevoMovimiento);
+                        }
+                        catch
+                        {
+                            return PosiblesMovimientos;
+                        }
                     }
                 }
             }
@@ -88,27 +85,22 @@ namespace Damas_2._0
 
                         TableroClonado = new Tablero(Tablero.Alto, Tablero.Ancho);
                         TableroClonado.Grilla = new Pieza[Tablero.Alto, Tablero.Ancho];
-                        TableroClonado = (Tablero)Tablero.Clone();
-
-                        /*   for (int f = 0; f < Tablero.Alto; f++)
-                           {
-                               for (int c = 0; c < Tablero.Alto; c++)
-                               {
-                                   TableroClonado.Grilla[f, c] = new Ficha(Tablero.Grilla[f, c].Jugador);
-                                   TableroClonado.Grilla[f, c].PosicionInicial = Tablero.Grilla[f, c].PosicionInicial;
-                               }
-                           }
-                           */
+                        TableroClonado = TableroClonado.Clonador.Clonar(Tablero);
 
                         TableroClonado.MoverPieza(this, Movimiento);
 
                         NuevaPosInicial = new Coordenada(Movimiento.X, Movimiento.Y);
-                        NuevoMovimiento = new Coordenada(CalcularNuevoMov2(TableroClonado).X, CalcularNuevoMov2(TableroClonado).Y);
 
-                        Movimiento = CalcularNuevoMov2(TableroClonado);
-
-                        if (NuevoMovimiento != null)
+                        try
+                        {
+                            NuevoMovimiento = new Coordenada(CalcularNuevoMov2(TableroClonado).X, CalcularNuevoMov2(TableroClonado).Y);
                             PosiblesMovimientos.Add(NuevoMovimiento);
+                        }
+                        catch
+                        {
+                            return PosiblesMovimientos;
+                        }
+
                     }
                 }
 
@@ -128,12 +120,14 @@ namespace Damas_2._0
                 {
                     NuevoMovimiento.PiezasComidas.Add(Tablero.Grilla[NuevoMovimiento.X, NuevoMovimiento.Y]);
                     NuevoMovimiento.X = NuevaPosInicial.X + Orientacion * 2;
-                    NuevoMovimiento.Y = NuevaPosInicial.Y + 2;              
-                }
-                else
-                {
-                    NuevoMovimiento = null;
-                }
+                    NuevoMovimiento.Y = NuevaPosInicial.Y + 2;
+
+                    
+                }   
+            }
+            else
+            {
+                NuevoMovimiento = null;
             }
             return NuevoMovimiento;
         }
@@ -149,12 +143,14 @@ namespace Damas_2._0
                 {
                     NuevoMovimiento.PiezasComidas.Add(Tablero.Grilla[NuevoMovimiento.X, NuevoMovimiento.Y]);
                     NuevoMovimiento.X = NuevaPosInicial.X + Orientacion * 2;
-                    NuevoMovimiento.Y = NuevaPosInicial.Y - 2; 
-                }
-                else
-                {
-                    NuevoMovimiento = null;
-                }
+                    NuevoMovimiento.Y = NuevaPosInicial.Y - 2;
+
+                    
+                }         
+            }
+            else
+            {
+                NuevoMovimiento = null;
             }
             return NuevoMovimiento;
         }
