@@ -10,8 +10,12 @@ namespace Damas_2._0
     class Ficha : Pieza
     {
         private int Orientacion;
+
         private Tablero TableroClonado;
         private Coordenada NuevaPosInicial;
+        private List<Coordenada> PosiblesMovimientos { get; set; } = new List<Coordenada>();
+        private List<Pieza> Capturadas { get; set; } = new List<Pieza>();
+        bool Capturo = false;
 
         public Ficha(Jugador Jugador) : base(Jugador)
         {
@@ -30,7 +34,6 @@ namespace Damas_2._0
             {
                 Coordenada Movimiento = new Coordenada(PosicionInicial.X + Orientacion, PosicionInicial.Y + 1);
                 Coordenada NuevoMovimiento;
-                Coordenada NuevoMovimiento2;
 
                 if (Tablero.Grilla[Movimiento.X, Movimiento.Y].Icono == '·')
                 {
@@ -52,28 +55,10 @@ namespace Damas_2._0
                         TableroClonado.MoverPieza(this, Movimiento);
 
                         NuevaPosInicial = new Coordenada(Movimiento.X, Movimiento.Y);
-
-                        try
-                        {
-                            NuevoMovimiento = new Coordenada(CalcularNuevoMov(TableroClonado).X, CalcularNuevoMov(TableroClonado).Y);
-                            NuevoMovimiento.PiezasComidas = CalcularNuevoMov(TableroClonado).PiezasComidas;
-                            NuevoMovimiento.PiezasComidas.Add(Movimiento.PiezasComidas[0]);
-                            PosiblesMovimientos.Add(NuevoMovimiento);
-
-                            NuevaPosInicial.X = NuevoMovimiento.X;
-                            NuevaPosInicial.Y = NuevoMovimiento.Y;
-
-                            NuevoMovimiento2 = new Coordenada(CalcularNuevoMov(TableroClonado).X, CalcularNuevoMov(TableroClonado).Y);
-                            NuevoMovimiento2.PiezasComidas = CalcularNuevoMov(TableroClonado).PiezasComidas;
-                            NuevoMovimiento2.PiezasComidas.Add(Movimiento.PiezasComidas[0]);
-                            NuevoMovimiento2.PiezasComidas.Add(NuevoMovimiento.PiezasComidas[0]);
-                            PosiblesMovimientos.Add(NuevoMovimiento2);
-                        }
-                        catch
-                        {
-                            return PosiblesMovimientos;
-                        }
-
+                        NuevoMovimiento = new Coordenada(CalcularNuevoMov(TableroClonado).X, CalcularNuevoMov(TableroClonado).Y);
+                        NuevoMovimiento.PiezasComidas = CalcularNuevoMov(TableroClonado).PiezasComidas;
+                        NuevoMovimiento.PiezasComidas.Add(Movimiento.PiezasComidas[0]);
+                        PosiblesMovimientos.Add(NuevoMovimiento);
                     }
                 }
             }
@@ -82,7 +67,6 @@ namespace Damas_2._0
             {
                 Coordenada Movimiento = new Coordenada(PosicionInicial.X + Orientacion, PosicionInicial.Y - 1);
                 Coordenada NuevoMovimiento;
-                Coordenada NuevoMovimiento2;
 
                 if (Tablero.Grilla[Movimiento.X, Movimiento.Y].Icono == '·')
                 {
@@ -104,27 +88,10 @@ namespace Damas_2._0
                         TableroClonado.MoverPieza(this, Movimiento);
 
                         NuevaPosInicial = new Coordenada(Movimiento.X, Movimiento.Y);
-
-                        try
-                        {
-                            NuevoMovimiento = new Coordenada(CalcularNuevoMov2(TableroClonado).X, CalcularNuevoMov2(TableroClonado).Y);
-                            NuevoMovimiento.PiezasComidas = CalcularNuevoMov2(TableroClonado).PiezasComidas;
-                            NuevoMovimiento.PiezasComidas.Add(Movimiento.PiezasComidas[0]);
-                            PosiblesMovimientos.Add(NuevoMovimiento);
-
-                            NuevaPosInicial.X = NuevoMovimiento.X;
-                            NuevaPosInicial.Y = NuevoMovimiento.Y;
-
-                            NuevoMovimiento2 = new Coordenada(CalcularNuevoMov2(TableroClonado).X, CalcularNuevoMov2(TableroClonado).Y);
-                            NuevoMovimiento2.PiezasComidas = CalcularNuevoMov2(TableroClonado).PiezasComidas;
-                            NuevoMovimiento2.PiezasComidas.Add(Movimiento.PiezasComidas[0]);
-                            NuevoMovimiento2.PiezasComidas.Add(NuevoMovimiento.PiezasComidas[0]);
-                            PosiblesMovimientos.Add(NuevoMovimiento2);
-                        }
-                        catch
-                        {
-                            return PosiblesMovimientos;
-                        }
+                        NuevoMovimiento = new Coordenada(CalcularNuevoMov2(TableroClonado).X, CalcularNuevoMov2(TableroClonado).Y);
+                        NuevoMovimiento.PiezasComidas = CalcularNuevoMov2(TableroClonado).PiezasComidas;
+                        NuevoMovimiento.PiezasComidas.Add(Movimiento.PiezasComidas[0]);
+                        PosiblesMovimientos.Add(NuevoMovimiento);
 
                     }
                 }
@@ -132,8 +99,6 @@ namespace Damas_2._0
             }
             return PosiblesMovimientos;
         }
-
-
 
         public Coordenada CalcularNuevoMov(Tablero Tablero)
         {
@@ -146,8 +111,8 @@ namespace Damas_2._0
                     NuevoMovimiento.PiezasComidas.Add(Tablero.Grilla[NuevoMovimiento.X, NuevoMovimiento.Y]);
                     NuevoMovimiento.PiezasComidas.Add(Tablero.Grilla[NuevoMovimiento.X, NuevoMovimiento.Y]);
                     NuevoMovimiento.X = NuevaPosInicial.X + Orientacion * 2;
-                    NuevoMovimiento.Y = NuevaPosInicial.Y + 2;        
-                }   
+                    NuevoMovimiento.Y = NuevaPosInicial.Y + 2;
+                }
             }
             else
             {
@@ -155,7 +120,6 @@ namespace Damas_2._0
             }
             return NuevoMovimiento;
         }
-
 
         public Coordenada CalcularNuevoMov2(Tablero Tablero)
         {
@@ -169,13 +133,74 @@ namespace Damas_2._0
                     NuevoMovimiento.PiezasComidas.Add(Tablero.Grilla[NuevoMovimiento.X, NuevoMovimiento.Y]);
                     NuevoMovimiento.X = NuevaPosInicial.X + Orientacion * 2;
                     NuevoMovimiento.Y = NuevaPosInicial.Y - 2;
-                }         
+                }
             }
             else
             {
                 NuevoMovimiento = null;
             }
             return NuevoMovimiento;
+        }
+
+        public override List<Coordenada> CalcularMovimientos(Coordenada PosicionInicio, Tablero Tablero)
+        {
+            if (Icono == 'O')
+                Orientacion = -1;
+            else if (Icono == 'X')
+                Orientacion = 1;
+
+            //------------------------------------------------------------------------------------------------------------------------------------------------
+            //LADO DERECHO
+
+            if (PosicionInicio.Y + 1 <= Tablero.Ancho - 1 && PosicionInicio.X + Orientacion <= Tablero.Alto)
+            {
+                Coordenada Movimiento = new Coordenada(PosicionInicio.X + Orientacion, PosicionInicio.Y + 1);
+
+                if (Tablero.Grilla[Movimiento.X, Movimiento.Y].Icono == '·' && !Capturo)
+                {
+                    PosiblesMovimientos.Add(Movimiento);
+                }
+                else if (Tablero.Grilla[Movimiento.X, Movimiento.Y].Icono != Icono && Tablero.Grilla[Movimiento.X, Movimiento.Y].Icono != '·')
+                {
+                    if (Tablero.Grilla[Movimiento.X + Orientacion, Movimiento.Y + 1].Icono == '·')
+                    {
+                        Coordenada Destino = new Coordenada(Movimiento.X + Orientacion, Movimiento.Y + 1);
+                        Capturadas.Add(Tablero.Grilla[Movimiento.X, Movimiento.Y]);
+                        Destino.PiezasComidas = Capturadas;
+                        PosiblesMovimientos.Add(Destino);
+                        Capturo = true;
+                        CalcularMovimientos(Destino, Tablero);      
+                    }
+                }
+            }
+
+            //------------------------------------------------------------------------------------------------------------------------------------------------
+
+            //------------------------------------------------------------------------------------------------------------------------------------------------
+            //LADO IZQUIERDO
+
+            if (PosicionInicio.Y - 1 <= Tablero.Ancho - 1 && PosicionInicio.X + Orientacion <= Tablero.Alto)
+            {
+                Coordenada Movimiento = new Coordenada(PosicionInicio.X + Orientacion, PosicionInicio.Y - 1);
+
+                if (Tablero.Grilla[Movimiento.X, Movimiento.Y].Icono == '·' && !Capturo)
+                {
+                    PosiblesMovimientos.Add(Movimiento);
+                }
+                else if (Tablero.Grilla[Movimiento.X, Movimiento.Y].Icono != Icono && Tablero.Grilla[Movimiento.X, Movimiento.Y].Icono != '·')
+                {
+                    if (Tablero.Grilla[Movimiento.X + Orientacion, Movimiento.Y - 1].Icono == '·')
+                    {
+                        Coordenada Destino = new Coordenada(Movimiento.X + Orientacion, Movimiento.Y - 1);
+                        Capturadas.Add(Tablero.Grilla[Movimiento.X, Movimiento.Y]);
+                        Destino.PiezasComidas = Capturadas;
+                        PosiblesMovimientos.Add(Destino);
+                        Capturo = true;
+                        CalcularMovimientos(Destino, Tablero);
+                    }
+                }
+            }
+            return PosiblesMovimientos;
         }
     }
 }

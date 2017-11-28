@@ -19,5 +19,7 @@ namespace Damas_2._0
         }
 
         public abstract List<Coordenada> CalcularMov(Tablero Tablero);
+
+        public abstract List<Coordenada> CalcularMovimientos(Coordenada PosicionInicio, Tablero Tablero);
     }
 }

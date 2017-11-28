@@ -135,7 +135,7 @@ namespace Damas_2._0
                 if (Tablero.Grilla[Fila, Columna].Icono == 'O' && Turno || Tablero.Grilla[Fila, Columna].Icono == 'X' && !Turno)
                 {
                     List<Coordenada> Ejemplo = new List<Coordenada>();
-                    Ejemplo = Tablero.Grilla[Fila, Columna].CalcularMov(Tablero);
+                    Ejemplo = Tablero.Grilla[Fila, Columna].CalcularMovimientos(Tablero.Grilla[Fila,Columna].PosicionInicial, Tablero);
                     Console.WriteLine("Posibles Movimientos:");
                     Console.WriteLine();
 

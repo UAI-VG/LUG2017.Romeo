@@ -18,5 +18,10 @@ namespace Damas_2._0
         {
             return null;
         }
+
+        public override List<Coordenada> CalcularMovimientos(Coordenada PosicionInicio, Tablero Tablero)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
