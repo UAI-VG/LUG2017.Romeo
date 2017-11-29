@@ -19,27 +19,22 @@ namespace Damas_2._0
         {
         }
 
-        public void CalcularMovs(Coordenada PosicionInicio, Tablero Tablero)
+        public void CalcularMovs(Coordenada PosicionInicio, Tablero Tablero, int Orientacion, int Lado)
         {
-            if (Icono == 'O')
-                Orientacion = 1;
-            else if (Icono == 'X')
-                Orientacion = 1;
-
             if (PosicionInicio.Y + 1 <= Tablero.Ancho - 1 && PosicionInicio.X + Orientacion <= Tablero.Alto && !Final)
             {
-                Coordenada Movimiento = new Coordenada(PosicionInicio.X + Orientacion, PosicionInicio.Y + 1);
+                Coordenada Movimiento = new Coordenada(PosicionInicio.X + Orientacion, PosicionInicio.Y + Lado);
 
                 if (Tablero.Grilla[Movimiento.X, Movimiento.Y].Icono != Icono && Tablero.Grilla[Movimiento.X, Movimiento.Y].Icono != '·')
                 {
-                    if (Tablero.Grilla[Movimiento.X + Orientacion, Movimiento.Y + 1].Icono == '·')
+                    if (Tablero.Grilla[Movimiento.X + Orientacion, Movimiento.Y + Lado].Icono == '·')
                     {
-                        Coordenada Destino = new Coordenada(Movimiento.X + Orientacion, Movimiento.Y + 1);
+                        Coordenada Destino = new Coordenada(Movimiento.X + Orientacion, Movimiento.Y + Lado);
                         Capturadas.Add(Tablero.Grilla[Movimiento.X, Movimiento.Y]);
                         Destino.PiezasComidas = Capturadas;
                         PosiblesMovimientos.Add(Destino);
                         Capturo = true;
-                        CalcularMovs(Destino, Tablero);
+                        CalcularMovs(Destino, Tablero, Orientacion, Lado);
                     }
                 }
             }
@@ -49,6 +44,7 @@ namespace Damas_2._0
         {
             for (int i = 1; i < Tablero.Alto; i++)
             {
+             //Abajo Derecha
                 try
                 {
                     if (Tablero.Grilla[PosicionInicial.X + i, PosicionInicial.Y + i].Icono == '·')
@@ -63,12 +59,88 @@ namespace Damas_2._0
                     else if (Tablero.Grilla[PosicionInicio.X + i, PosicionInicio.Y + i].Icono != '·' && Tablero.Grilla[PosicionInicio.X + i, PosicionInicio.Y + i].Icono != Icono)
                     {                      
                         Coordenada Inicio = new Coordenada(PosicionInicio.X + i - 1, PosicionInicio.Y + i - 1);
-                        CalcularMovs(Inicio, Tablero);
+                        CalcularMovs(Inicio, Tablero, 1, 1);
                         break;
                     }
                 }
-                catch (IndexOutOfRangeException) { }      
+                catch (IndexOutOfRangeException) { }
+                
+                // Abajo Izquierda
+                try
+                {
+                    if (Tablero.Grilla[PosicionInicial.X + i, PosicionInicial.Y - i].Icono == '·')
+                    {
+                        Coordenada Movimiento = new Coordenada(PosicionInicial.X + i, PosicionInicial.Y - i);
+                        PosiblesMovimientos.Add(Movimiento);
+                    }
+                    else if (Tablero.Grilla[PosicionInicio.X + i, PosicionInicio.Y - i].Icono != '·' && Tablero.Grilla[PosicionInicio.X + i, PosicionInicio.Y - i].Icono == Icono)
+                    {
+                        break;
+                    }
+                    else if (Tablero.Grilla[PosicionInicio.X + i, PosicionInicio.Y - i].Icono != '·' && Tablero.Grilla[PosicionInicio.X + i, PosicionInicio.Y - i].Icono != Icono)
+                    {
+                        Coordenada Inicio = new Coordenada(PosicionInicio.X + i - 1, PosicionInicio.Y - i + 1);
+                        CalcularMovs(Inicio, Tablero, 1, - 1);
+                        break;
+                    }
+                }
+                catch (IndexOutOfRangeException) { }
+
+                // Arriba Derecha
+                try
+                {
+                    if (Tablero.Grilla[PosicionInicial.X - i, PosicionInicial.Y + i].Icono == '·')
+                    {
+                        Coordenada Movimiento = new Coordenada(PosicionInicial.X - i, PosicionInicial.Y + i);
+                        PosiblesMovimientos.Add(Movimiento);
+                    }
+                    else if (Tablero.Grilla[PosicionInicio.X - i, PosicionInicio.Y + i].Icono != '·' && Tablero.Grilla[PosicionInicio.X - i, PosicionInicio.Y + i].Icono == Icono)
+                    {
+                        break;
+                    }
+                    else if (Tablero.Grilla[PosicionInicio.X - i, PosicionInicio.Y + i].Icono != '·' && Tablero.Grilla[PosicionInicio.X - i, PosicionInicio.Y + i].Icono != Icono)
+                    {
+                        Coordenada Inicio = new Coordenada(PosicionInicio.X - i + 1, PosicionInicio.Y + i - 1);
+                        CalcularMovs(Inicio, Tablero, -1, 1);
+                        break;
+                    }
+                }
+                catch (IndexOutOfRangeException) { }
+
+
+                // Arriba Izquierda
+                try
+                {
+                    if (Tablero.Grilla[PosicionInicial.X - i, PosicionInicial.Y - i].Icono == '·')
+                    {
+                        Coordenada Movimiento = new Coordenada(PosicionInicial.X - i, PosicionInicial.Y - i);
+                        PosiblesMovimientos.Add(Movimiento);
+                    }
+                    else if (Tablero.Grilla[PosicionInicio.X - i, PosicionInicio.Y - i].Icono != '·' && Tablero.Grilla[PosicionInicio.X - i, PosicionInicio.Y - i].Icono == Icono)
+                    {
+                        break;
+                    }
+                    else if (Tablero.Grilla[PosicionInicio.X - i, PosicionInicio.Y - i].Icono != '·' && Tablero.Grilla[PosicionInicio.X - i, PosicionInicio.Y - i].Icono != Icono)
+                    {
+                        Coordenada Inicio = new Coordenada(PosicionInicio.X - i + 1, PosicionInicio.Y - i + 1);
+                        CalcularMovs(Inicio, Tablero, -1, -1);
+                        break;
+                    }
+                }
+                catch (IndexOutOfRangeException) { }
+
+
+
+
+
+
             }
+
+
+
+
+
+
 
             return PosiblesMovimientos;
         }

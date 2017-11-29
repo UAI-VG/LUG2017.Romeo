@@ -83,24 +83,24 @@ namespace Damas_2._0
                     }
                 }
 
-                Tablero.Grilla[3, 0] = new Dama(Jugador2);
-                Tablero.Grilla[3, 0].PosicionInicial = new Coordenada(3, 0);
-                Jugador2.Piezas.Add(Tablero.Grilla[3, 0]);
+                Tablero.Grilla[7, 2] = new Dama(Jugador2);
+                Tablero.Grilla[7, 2].PosicionInicial = new Coordenada(7, 2);
+                Jugador2.Piezas.Add(Tablero.Grilla[7, 2]);
 
-                Tablero.Grilla[8, 5] = new Ficha(Jugador1);
+                Tablero.Grilla[2, 7] = new Ficha(Jugador1);
                 Tablero.Grilla[2, 3] = new Ficha(Jugador1);
-                Tablero.Grilla[6, 3] = new Ficha(Jugador1);
+                Tablero.Grilla[4, 5] = new Ficha(Jugador1);
                 Tablero.Grilla[3, 2] = new Ficha(Jugador1);
 
-                Tablero.Grilla[8, 5].PosicionInicial = new Coordenada(8, 5);
+                Tablero.Grilla[2, 7].PosicionInicial = new Coordenada(2, 7);
                 Tablero.Grilla[2, 3].PosicionInicial = new Coordenada(2, 3);
-                Tablero.Grilla[6, 3].PosicionInicial = new Coordenada(6, 3);
+                Tablero.Grilla[4, 5].PosicionInicial = new Coordenada(4, 5);
                 Tablero.Grilla[3, 2].PosicionInicial = new Coordenada(3, 2);
 
                 Jugador1.Piezas.Add(Tablero.Grilla[3, 2]);
                 Jugador1.Piezas.Add(Tablero.Grilla[2, 3]);
-                Jugador1.Piezas.Add(Tablero.Grilla[8, 5]);
-                Jugador1.Piezas.Add(Tablero.Grilla[6, 3]);
+                Jugador1.Piezas.Add(Tablero.Grilla[2, 7]);
+                Jugador1.Piezas.Add(Tablero.Grilla[4, 5]);
 
             }
             foreach (Pieza p in Jugador1.Piezas)
