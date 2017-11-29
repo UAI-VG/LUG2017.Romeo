@@ -16,6 +16,7 @@ namespace Damas_2._0
         private List<Coordenada> PosiblesMovimientos { get; set; } = new List<Coordenada>();
         private List<Pieza> Capturadas { get; set; } = new List<Pieza>();
         bool Capturo = false;
+        bool Final = false;
 
         public Ficha(Jugador Jugador) : base(Jugador)
         {
@@ -152,7 +153,7 @@ namespace Damas_2._0
             //------------------------------------------------------------------------------------------------------------------------------------------------
             //LADO DERECHO
 
-            if (PosicionInicio.Y + 1 <= Tablero.Ancho - 1 && PosicionInicio.X + Orientacion <= Tablero.Alto)
+            if (PosicionInicio.Y + 1 <= Tablero.Ancho - 1 && PosicionInicio.X + Orientacion <= Tablero.Alto && !Final)
             {
                 Coordenada Movimiento = new Coordenada(PosicionInicio.X + Orientacion, PosicionInicio.Y + 1);
 
@@ -179,7 +180,7 @@ namespace Damas_2._0
             //------------------------------------------------------------------------------------------------------------------------------------------------
             //LADO IZQUIERDO
 
-            if (PosicionInicio.Y - 1 <= Tablero.Ancho - 1 && PosicionInicio.X + Orientacion <= Tablero.Alto)
+            if (PosicionInicio.Y - 1 >= 0 && PosicionInicio.X + Orientacion >= 0 && !Final)
             {
                 Coordenada Movimiento = new Coordenada(PosicionInicio.X + Orientacion, PosicionInicio.Y - 1);
 
@@ -200,6 +201,7 @@ namespace Damas_2._0
                     }
                 }
             }
+            Final = true;
             return PosiblesMovimientos;
         }
     }

@@ -13,86 +13,96 @@ namespace Damas_2._0
         public Jugador Jugador2 { get; set; } = new Jugador();
         public Tablero Tablero { get; set; } = new Tablero(10, 10);
         Graficador Graficador = new Graficador();
+        private bool Test = true;
 
         public void CrearPartida()
         {
             Turno = true;
             Tablero.Grilla = new Pieza[Tablero.Alto, Tablero.Ancho];
 
-            /*
-            for (int f = 0; f < Tablero.Alto; f++)
+            if (!Test)
             {
-                for (int c = 0; c < Tablero.Ancho; c +=2)
+                for (int f = 0; f < Tablero.Alto; f++)
                 {
-                    Tablero.Grilla[f, c] = new CasilleroVacio(null);
-                    Tablero.Grilla[f, c].Icono = '·';
-                    if (f == 1 || f == 3)
+                    for (int c = 0; c < Tablero.Ancho; c += 2)
                     {
-                        Tablero.Grilla[f, c] = new Ficha(Jugador1);
-                        Tablero.Grilla[f, c].PosicionInicial = new Coordenada(f, c);
-                        Jugador1.Piezas.Add(Tablero.Grilla[f, c]);
-                        Tablero.Grilla[f, c].Icono = Tablero.Grilla[f, c].Icono;
-                    }
+                        Tablero.Grilla[f, c] = new CasilleroVacio(null);
+                        Tablero.Grilla[f, c].Icono = '·';
+                        if (f == 1 || f == 3)
+                        {
+                            Tablero.Grilla[f, c] = new Ficha(Jugador1);
+                            Tablero.Grilla[f, c].PosicionInicial = new Coordenada(f, c);
+                            Jugador1.Piezas.Add(Tablero.Grilla[f, c]);
+                            Tablero.Grilla[f, c].Icono = Tablero.Grilla[f, c].Icono;
+                        }
 
-                    if (f == 7 || f == 9)
-                    {
-                        Tablero.Grilla[f, c] = new Ficha(Jugador1);
-                        Tablero.Grilla[f, c].PosicionInicial = new Coordenada(f, c);
-                        Jugador2.Piezas.Add(Tablero.Grilla[f, c]);
-                        Tablero.Grilla[f, c].Icono = Tablero.Grilla[f, c].Icono;
+                        if (f == 7 || f == 9)
+                        {
+                            Tablero.Grilla[f, c] = new Ficha(Jugador1);
+                            Tablero.Grilla[f, c].PosicionInicial = new Coordenada(f, c);
+                            Jugador2.Piezas.Add(Tablero.Grilla[f, c]);
+                            Tablero.Grilla[f, c].Icono = Tablero.Grilla[f, c].Icono;
+                        }
                     }
                 }
-            }
 
-            for (int f = 0; f < Tablero.Alto; f++)
-            {
-                for (int c = 1; c < Tablero.Ancho; c += 2)
+                for (int f = 0; f < Tablero.Alto; f++)
                 {
-                    Tablero.Grilla[f, c] = new CasilleroVacio(null);
-                    Tablero.Grilla[f, c].Icono = '·';
-
-                    if (f == 0 || f == 2)
+                    for (int c = 1; c < Tablero.Ancho; c += 2)
                     {
-                        Tablero.Grilla[f, c] = new Ficha(Jugador1);
-                        Tablero.Grilla[f, c].PosicionInicial = new Coordenada(f, c);
-                        Jugador1.Piezas.Add(Tablero.Grilla[f, c]);
-                        Tablero.Grilla[f, c].Icono = Tablero.Grilla[f, c].Icono;                       
-                    }
+                        Tablero.Grilla[f, c] = new CasilleroVacio(null);
+                        Tablero.Grilla[f, c].Icono = '·';
 
-                    if (f == 6 || f == 8)
-                    {
-                        Tablero.Grilla[f, c] = new Ficha(Jugador2);
-                        Tablero.Grilla[f, c].PosicionInicial = new Coordenada(f, c);
-                        Jugador2.Piezas.Add(Tablero.Grilla[f, c]);
-                        Tablero.Grilla[f, c].Icono = Tablero.Grilla[f, c].Icono;            
-                    }
-                }               
-            }
+                        if (f == 0 || f == 2)
+                        {
+                            Tablero.Grilla[f, c] = new Ficha(Jugador1);
+                            Tablero.Grilla[f, c].PosicionInicial = new Coordenada(f, c);
+                            Jugador1.Piezas.Add(Tablero.Grilla[f, c]);
+                            Tablero.Grilla[f, c].Icono = Tablero.Grilla[f, c].Icono;
+                        }
 
-    */
-            for (int f = 0; f < Tablero.Alto; f++)
-            {
-                for (int c = 0; c < Tablero.Alto; c++)
-                {
-                    Tablero.Grilla[f, c] = new CasilleroVacio(null);
-                    Tablero.Grilla[f, c].Icono = '·';
+                        if (f == 6 || f == 8)
+                        {
+                            Tablero.Grilla[f, c] = new Ficha(Jugador2);
+                            Tablero.Grilla[f, c].PosicionInicial = new Coordenada(f, c);
+                            Jugador2.Piezas.Add(Tablero.Grilla[f, c]);
+                            Tablero.Grilla[f, c].Icono = Tablero.Grilla[f, c].Icono;
+                        }
+                    }
                 }
+
             }
+            else //MODO TEST
+            {
+                for (int f = 0; f < Tablero.Alto; f++)
+                {
+                    for (int c = 0; c < Tablero.Alto; c++)
+                    {
+                        Tablero.Grilla[f, c] = new CasilleroVacio(null);
+                        Tablero.Grilla[f, c].Icono = '·';
+                    }
+                }
 
-            Tablero.Grilla[7, 0] = new Ficha(Jugador2);
-            Tablero.Grilla[7, 0].PosicionInicial = new Coordenada(7, 0);
-            Jugador2.Piezas.Add(Tablero.Grilla[7, 0]);
-            Tablero.Grilla[6, 1] = new Ficha(Jugador1);
-            Tablero.Grilla[4, 3] = new Ficha(Jugador1);
-            Tablero.Grilla[2, 3] = new Ficha(Jugador1);
-            Tablero.Grilla[6, 1].PosicionInicial = new Coordenada(6, 1);
-            Tablero.Grilla[4, 3].PosicionInicial = new Coordenada(4, 3);
-            Tablero.Grilla[2, 3].PosicionInicial = new Coordenada(2, 3);
-            Jugador1.Piezas.Add(Tablero.Grilla[2, 3]);
-            Jugador1.Piezas.Add(Tablero.Grilla[6, 1]);
-            Jugador1.Piezas.Add(Tablero.Grilla[4, 3]);
+                Tablero.Grilla[3, 0] = new Dama(Jugador2);
+                Tablero.Grilla[3, 0].PosicionInicial = new Coordenada(3, 0);
+                Jugador2.Piezas.Add(Tablero.Grilla[3, 0]);
 
+              //  Tablero.Grilla[8, 1] = new Ficha(Jugador1);
+                Tablero.Grilla[2, 3] = new Ficha(Jugador1);
+                Tablero.Grilla[6, 3] = new Ficha(Jugador1);
+                Tablero.Grilla[3, 2] = new Ficha(Jugador1);
 
+             //   Tablero.Grilla[8, 1].PosicionInicial = new Coordenada(8, 1);
+                Tablero.Grilla[2, 3].PosicionInicial = new Coordenada(2, 3);
+                Tablero.Grilla[6, 3].PosicionInicial = new Coordenada(6, 3);
+                Tablero.Grilla[3, 2].PosicionInicial = new Coordenada(3, 2);
+
+                Jugador1.Piezas.Add(Tablero.Grilla[3, 2]);
+                Jugador1.Piezas.Add(Tablero.Grilla[2, 3]);
+             //   Jugador1.Piezas.Add(Tablero.Grilla[8, 1]);
+                Jugador1.Piezas.Add(Tablero.Grilla[6, 3]);
+
+            }
             foreach (Pieza p in Jugador1.Piezas)
             {
                 p.Icono = 'X';
@@ -152,7 +162,7 @@ namespace Damas_2._0
                         }
 
                         Console.WriteLine();
-                        Console.WriteLine("A que posicion Mover? 0 / 1");
+                        Console.WriteLine("A que posicion Mover? ");
 
                         int Jugada = int.Parse(Console.ReadLine());
                         Coordenada Destino = Ejemplo[Jugada];
