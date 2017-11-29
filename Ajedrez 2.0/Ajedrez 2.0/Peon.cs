@@ -14,6 +14,18 @@ namespace Ajedrez_2._0
             {
                 try
                 {
+                    if (Coordenadas.Y + 1 <= Tablero.GetLength(1) &&
+                       Tablero[Coordenadas.X + 1, Coordenadas.Y + 1].Color != Color && Tablero[Coordenadas.X + 1, Coordenadas.Y + 1].Img != '*')
+                    {
+                        Tablero[Coordenadas.X + 1, Coordenadas.Y + 1].Img = 'X';
+                    }
+
+                    if (Coordenadas.Y - 1 >= 0 &&
+                        Tablero[Coordenadas.X + 1, Coordenadas.Y - 1].Color != Color && Tablero[Coordenadas.X + 1, Coordenadas.Y - 1].Img != '*')
+                    {
+                        Tablero[Coordenadas.X + 1, Coordenadas.Y - 1].Img = 'X';
+                    }
+
                     if (Tablero[Coordenadas.X + 1, Coordenadas.Y].Img == '*' || Tablero[Coordenadas.X + 1, Coordenadas.Y].Color != this.Color)
                         Tablero[Coordenadas.X + 1, Coordenadas.Y].Img = 'X';
 
@@ -27,6 +39,18 @@ namespace Ajedrez_2._0
             {
                 try
                 {
+                    if (Coordenadas.Y + 1 <= Tablero.GetLength(1) &&
+                         Tablero[Coordenadas.X - 1, Coordenadas.Y + 1].Color != Color && Tablero[Coordenadas.X - 1, Coordenadas.Y + 1].Img != '*')
+                    {
+                        Tablero[Coordenadas.X - 1, Coordenadas.Y + 1].Img = 'X';
+                    }
+
+                    if (Coordenadas.Y - 1 >= 0 &&
+                        Tablero[Coordenadas.X - 1, Coordenadas.Y - 1].Color != Color && Tablero[Coordenadas.X - 1, Coordenadas.Y - 1].Img != '*')
+                    {
+                        Tablero[Coordenadas.X - 1, Coordenadas.Y - 1].Img = 'X';
+                    }
+
                     if (Tablero[Coordenadas.X - 1, Coordenadas.Y].Img == '*' || Tablero[Coordenadas.X - 1, Coordenadas.Y].Color != this.Color)
                         Tablero[Coordenadas.X - 1, Coordenadas.Y].Img = 'X';
 

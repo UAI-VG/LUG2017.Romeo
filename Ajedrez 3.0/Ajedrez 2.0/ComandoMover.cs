@@ -14,6 +14,7 @@ namespace Ajedrez_2._0
         Pieza[,] Tablero;
         public List<Coordenada> ListaMovBlancos;
         public List<Coordenada> ListaMovNegros;
+        public Stack<Pieza> PiezasComidas = new Stack<Pieza>();
 
         public ComandoMover(Pieza p, Coordenada PosInicial, Coordenada PosFinal, Pieza[,]Tablero, List<Coordenada>ListaBlanco, List<Coordenada>ListaNegros)
         {
@@ -34,6 +35,7 @@ namespace Ajedrez_2._0
                 {
                     if (c.X == PosFinal.X && c.Y == PosFinal.Y)
                     {
+                        PiezasComidas.Push(Tablero[PosFinal.X, PosFinal.Y]);
                         Tablero[PosFinal.X, PosFinal.Y] = p;
                         Tablero[PosInicial.X, PosInicial.Y] = new PiezaVacia();
                     }
@@ -45,6 +47,7 @@ namespace Ajedrez_2._0
                 {
                     if (c.X == PosFinal.X && c.Y == PosFinal.Y)
                     {
+                        PiezasComidas.Push(Tablero[PosFinal.X, PosFinal.Y]);
                         Tablero[PosFinal.X, PosFinal.Y] = p;
                         Tablero[PosInicial.X, PosInicial.Y] = new PiezaVacia();
                     }
@@ -54,9 +57,12 @@ namespace Ajedrez_2._0
         }
 
         public override void Revertir()
-        {
+        {           
             Tablero[PosInicial.X, PosInicial.Y] = p;
-            Tablero[PosFinal.X, PosFinal.Y] = new PiezaVacia();
+            if (PiezasComidas.Count > 0)
+            Tablero[PosFinal.X, PosFinal.Y] = PiezasComidas.Pop();
+            else
+                Tablero[PosFinal.X, PosFinal.Y] = new PiezaVacia();
         }
     }
 }

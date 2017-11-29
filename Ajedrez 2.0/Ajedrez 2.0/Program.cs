@@ -183,49 +183,49 @@ namespace Ajedrez_2._0
             //Coordenada es una clase que cree yo que tiene 2 int (x,y) y un puntaje, dependiendo de a que pieza aloje dicha coordenada, su puntaje va a ser uno u otro
             foreach (Coordenada c in ListaBlanca)
             {
-                if (Tablero[c.X, c.Y].Img == 'r')
+                if (Tablero[c.X, c.Y].Img == 'r' && Tablero[c.X, c.Y].Color != 'B')
                 {
-                    c.Puntaje += 9;
+                    c.Puntaje = 9;
                 }
-                else if (Tablero[c.X, c.Y].Img == 'T')
+                else if (Tablero[c.X, c.Y].Img == 'T' && Tablero[c.X, c.Y].Color != 'B')
                 {
-                    c.Puntaje += 5;
+                    c.Puntaje = 5;
                 }
-                else if (Tablero[c.X, c.Y].Img == 'A' || Tablero[c.X, c.Y].Img == 'C')
+                else if (Tablero[c.X, c.Y].Img == 'A' || Tablero[c.X, c.Y].Img == 'C' && Tablero[c.X, c.Y].Color != 'B')
                 {
-                    c.Puntaje += 3;
+                    c.Puntaje = 3;
                 }
-                else if (Tablero[c.X, c.Y].Img == 'P')
+                else if (Tablero[c.X, c.Y].Img == 'P' && Tablero[c.X, c.Y].Color != 'B')
                 {
-                    c.Puntaje += 1;
+                    c.Puntaje = 1;
                 }
                 else
                 {
-                    c.Puntaje += 0;
+                    c.Puntaje = 0;
                 }
             }
 
             foreach (Coordenada c in ListaNegra) //Lo mismo pero en la otra lista
             {
-                if (Tablero[c.X, c.Y].Img == 'r')
+                if (Tablero[c.X, c.Y].Img == 'r' && Tablero[c.X, c.Y].Color != 'N')
                 {
-                    c.Puntaje += 9;
+                    c.Puntaje = 9;
                 }
-                else if (Tablero[c.X, c.Y].Img == 'T')
+                else if (Tablero[c.X, c.Y].Img == 'T' && Tablero[c.X, c.Y].Color != 'N')
                 {
-                    c.Puntaje += 5;
+                    c.Puntaje = 5;
                 }
-                else if (Tablero[c.X, c.Y].Img == 'A' || Tablero[c.X, c.Y].Img == 'C')
+                else if (Tablero[c.X, c.Y].Img == 'A' || Tablero[c.X, c.Y].Img == 'C' && Tablero[c.X, c.Y].Color != 'N')
                 {
-                    c.Puntaje += 3;
+                    c.Puntaje = 3;
                 }
-                else if (Tablero[c.X, c.Y].Img == 'P')
+                else if (Tablero[c.X, c.Y].Img == 'P' && Tablero[c.X, c.Y].Color != 'N')
                 {
-                    c.Puntaje += 1;
+                    c.Puntaje = 1;
                 }
                 else
                 {
-                    c.Puntaje += 0;
+                    c.Puntaje = 0;
                 }
             }
         }
@@ -233,15 +233,29 @@ namespace Ajedrez_2._0
         static void MostrarMovimientos(List<Coordenada> ListaBlanca, List<Coordenada> ListaNegra)
         {
             Coordenada aux;
-            for (int i = 0; i < ListaBlanca.Count - 1; i++)
+            for (int i = 1; i < ListaBlanca.Count - 1; i++)
             {
-                for (int j = i + 1; j < ListaBlanca.Count; j++)
+                for (int j = 0; j < ListaBlanca.Count - 1; j++)
                 {
                     if (ListaBlanca[i].Puntaje > ListaBlanca[j].Puntaje)
                     {
-                        aux = ListaBlanca[j];
-                        ListaBlanca[j] = ListaBlanca[i];
-                        ListaBlanca[i] = aux;
+                        aux = ListaBlanca[i];
+                        ListaBlanca[i] = ListaBlanca[j];
+                        ListaBlanca[j] = aux;
+                    }
+                }
+            }
+
+            Coordenada aux2;
+            for (int i = 1; i < ListaNegra.Count - 1; i++)
+            {
+                for (int j = 0; j < ListaNegra.Count - 1; j++)
+                {
+                    if (ListaNegra[i].Puntaje > ListaNegra[j].Puntaje)
+                    {
+                        aux2 = ListaNegra[i];
+                        ListaNegra[i] = ListaNegra[j];
+                        ListaNegra[j] = aux2;
                     }
                 }
             }

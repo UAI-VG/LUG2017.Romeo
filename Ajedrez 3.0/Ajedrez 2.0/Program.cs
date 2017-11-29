@@ -423,25 +423,9 @@ namespace Ajedrez_2._0
                 Console.WriteLine(letra + c.Y.ToString());
             }
 
-
-
             Console.WriteLine();
             Console.Write("****************************************");
             Console.WriteLine();
-
-            //Coordenada aux2;
-            //for (int x = 0; x < ListaNegra.Count - 1; x++)
-            //{
-            //    for (int y = x + 1; y < ListaNegra.Count; y++)
-            //    {
-            //        if (ListaBlanca[x].Puntaje > ListaNegra[y].Puntaje)
-            //        {
-            //            aux2 = ListaBlanca[y];
-            //            ListaNegra[y] = ListaNegra[x];
-            //            ListaNegra[x] = aux2;
-            //        }
-            //    }
-            //}
 
             Console.WriteLine("Movimientos Piezas Negras");
             //Lo mismo para la otra lista
@@ -550,11 +534,13 @@ namespace Ajedrez_2._0
 
                 if (Terminar2 == 'z')
                 {
+                    Turno = !Turno;
                     EditorCommandManager.Instance.Undo();
                     MostrarTablero();
                 }
                 else if (Terminar2 == 'r')
                 {
+                    Turno = !Turno;
                     EditorCommandManager.Instance.Redo();
                     MostrarTablero();
                 }
@@ -562,23 +548,6 @@ namespace Ajedrez_2._0
 
             EscribirArchivos();
             Console.WriteLine("Tablero Guardado");
-            //do
-            //{
-            //    ActualizarMovimientos(MovPosiblesBlancos, MovPosiblesNegros, Tablero); //Al principio de actualizan todos los movimientos
-            //    Puntuar(MovPosiblesBlancos, MovPosiblesNegros);//A todas las posiciones se les setea su puntaje
-            //    MostrarTablero();//Se muestra el array con las piezas actuales
-            //    PonerPieza();//Se pide poner una pieza nueva
-            //    MostrarTablero();//Muestra el tablero con la ultima pieza agregada incluida
-            //    MostrarMovimientos(MovPosiblesBlancos, MovPosiblesNegros);//Muestra ambas listas de movimientos posibles
-
-            //    Console.WriteLine();
-            //    Console.WriteLine("Terminar (s)Si / (n)No "); //Loopea segun la respuesta
-            //    Terminar = char.Parse(Console.ReadLine());
-            //} while (Terminar != 's');
-            //ActualizarMovimientos(MovPosiblesBlancos, MovPosiblesNegros, Tablero);
-            //MostrarTablero();
-            //EscribirArchivos();
-
             Console.ReadKey();
         }
     }

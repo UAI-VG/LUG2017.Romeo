@@ -65,49 +65,41 @@ namespace _5enRayaForm
         private void button1_Click(object sender, EventArgs e)
         {
             game.Play(0);
-            game.NextTurn();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             game.Play(1);
-            game.NextTurn();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             game.Play(2);
-            game.NextTurn();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             game.Play(3);
-            game.NextTurn();
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
             game.Play(4);
-            game.NextTurn();
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
             game.Play(5);
-            game.NextTurn();
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             game.Play(6);
-            game.NextTurn();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             game.Play(7);
-            game.NextTurn();
         }
 
         private void mETODOcUALQUIERA()
