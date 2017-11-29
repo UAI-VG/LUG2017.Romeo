@@ -22,7 +22,7 @@ namespace Damas_2._0
         public void CalcularMovs(Coordenada PosicionInicio, Tablero Tablero)
         {
             if (Icono == 'O')
-                Orientacion = -1;
+                Orientacion = 1;
             else if (Icono == 'X')
                 Orientacion = 1;
 
@@ -47,38 +47,24 @@ namespace Damas_2._0
 
         public override List<Coordenada> CalcularMovimientos(Coordenada PosicionInicio, Tablero Tablero)
         {
-            int VarX1 = 1;
-            int VarX2 = 1;
-            int VarX3 = 1;
-            int VarX4 = 1;
-            int VarY1 = 1;
-            int VarY2 = 1;
-            int VarY3 = 1;
-            int VarY4 = 1;
-
-            bool BlockDR = false;
-            bool BlockUR = false;
-            bool BlockDL = false;
-            bool BlockUL = false;
-
-            for (int i = 0; i < Tablero.Alto; i++)
+            for (int i = 1; i < Tablero.Alto; i++)
             {
                 try
                 {
-                    if (Tablero.Grilla[PosicionInicial.X + VarX1, PosicionInicial.Y + VarY1].Icono == '·' && !BlockDR)
+                    if (Tablero.Grilla[PosicionInicial.X + i, PosicionInicial.Y + i].Icono == '·')
                     {
                         Coordenada Movimiento = new Coordenada(PosicionInicial.X + i, PosicionInicial.Y + i);
                         PosiblesMovimientos.Add(Movimiento);
                     }
-                    else if (Tablero.Grilla[PosicionInicio.X + VarX1, PosicionInicio.Y + VarY1].Icono != '·' && Tablero.Grilla[PosicionInicio.X + VarX1, PosicionInicio.Y + VarY1].Icono == Icono && !BlockDR)
+                    else if (Tablero.Grilla[PosicionInicio.X + i, PosicionInicio.Y + i].Icono != '·' && Tablero.Grilla[PosicionInicio.X + i, PosicionInicio.Y + i].Icono == Icono)
                     {
-                        BlockDR = true;
+                        break;
                     }
-                    else if (Tablero.Grilla[PosicionInicio.X + VarX1, PosicionInicio.Y + VarY1].Icono != '·' && Tablero.Grilla[PosicionInicio.X + VarX1, PosicionInicio.Y + VarY1].Icono != Icono && !BlockDR)
-                    {
-                        BlockDR = true;
-                        Coordenada Inicio = new Coordenada(PosicionInicio.X + VarX1 - 1, PosicionInicio.Y + VarY1 - 1);
+                    else if (Tablero.Grilla[PosicionInicio.X + i, PosicionInicio.Y + i].Icono != '·' && Tablero.Grilla[PosicionInicio.X + i, PosicionInicio.Y + i].Icono != Icono)
+                    {                      
+                        Coordenada Inicio = new Coordenada(PosicionInicio.X + i - 1, PosicionInicio.Y + i - 1);
                         CalcularMovs(Inicio, Tablero);
+                        break;
                     }
                 }
                 catch (IndexOutOfRangeException) { }      

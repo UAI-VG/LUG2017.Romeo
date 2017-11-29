@@ -12,7 +12,6 @@ namespace Ajedrez_2._0
         void UbicarRey(Pieza[,] Tablero, Coordenada Coordenadas, List<Coordenada> ListaBlanca, List<Coordenada> ListaNegra, char Color)
         {
             //Cada try/catch corresponde a un enroque, basicamente, si tiene una torre al rango, se modifican sus posiciones
-
             //Enroque largo************************************
             try
             {
@@ -111,8 +110,6 @@ namespace Ajedrez_2._0
                 }
             }
             catch (IndexOutOfRangeException) { }
-
-
 
             // No enroque
             try
