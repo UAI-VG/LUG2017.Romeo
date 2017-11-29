@@ -83,23 +83,23 @@ namespace Damas_2._0
                     }
                 }
 
-                Tablero.Grilla[3, 0] = new Dama(Jugador2);
-                Tablero.Grilla[3, 0].PosicionInicial = new Coordenada(3, 0);
-                Jugador2.Piezas.Add(Tablero.Grilla[3, 0]);
+                Tablero.Grilla[9, 0] = new Ficha(Jugador2);
+                Tablero.Grilla[9, 0].PosicionInicial = new Coordenada(9, 0);
+                Jugador2.Piezas.Add(Tablero.Grilla[9, 0]);
 
-              //  Tablero.Grilla[8, 1] = new Ficha(Jugador1);
+                Tablero.Grilla[8, 1] = new Ficha(Jugador1);
                 Tablero.Grilla[2, 3] = new Ficha(Jugador1);
                 Tablero.Grilla[6, 3] = new Ficha(Jugador1);
                 Tablero.Grilla[3, 2] = new Ficha(Jugador1);
 
-             //   Tablero.Grilla[8, 1].PosicionInicial = new Coordenada(8, 1);
+                Tablero.Grilla[8, 1].PosicionInicial = new Coordenada(8, 1);
                 Tablero.Grilla[2, 3].PosicionInicial = new Coordenada(2, 3);
                 Tablero.Grilla[6, 3].PosicionInicial = new Coordenada(6, 3);
                 Tablero.Grilla[3, 2].PosicionInicial = new Coordenada(3, 2);
 
                 Jugador1.Piezas.Add(Tablero.Grilla[3, 2]);
                 Jugador1.Piezas.Add(Tablero.Grilla[2, 3]);
-             //   Jugador1.Piezas.Add(Tablero.Grilla[8, 1]);
+                Jugador1.Piezas.Add(Tablero.Grilla[8, 1]);
                 Jugador1.Piezas.Add(Tablero.Grilla[6, 3]);
 
             }
