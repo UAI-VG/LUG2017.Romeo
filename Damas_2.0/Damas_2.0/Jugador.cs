@@ -10,6 +10,5 @@ namespace Damas_2._0
     public class Jugador
     {
         public List<Pieza> Piezas { get; set; } = new List<Pieza>();
-        public Tablero Tablero { get; set; }
     }
 }

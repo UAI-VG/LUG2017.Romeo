@@ -15,7 +15,7 @@ namespace Damas_2._0
 
             Juego.CrearPartida();
 
-            while (Juego.Jugador1.Piezas.Count == 0 || Juego.Jugador2.Piezas.Count == 0)
+            while (true)
             {
                 Juego.Jugar();
             }

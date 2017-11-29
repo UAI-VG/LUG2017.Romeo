@@ -113,8 +113,7 @@ namespace Damas_2._0
                 p.Icono = 'O';
             }
 
-            Jugador1.Tablero = Tablero;
-            Jugador2.Tablero = Tablero;
+
             Graficador.GraficarTablero(Tablero);
             Console.WriteLine();
         }
