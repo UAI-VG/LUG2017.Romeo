@@ -128,20 +128,7 @@ namespace Damas_2._0
                     }
                 }
                 catch (IndexOutOfRangeException) { }
-
-
-
-
-
-
             }
-
-
-
-
-
-
-
             return PosiblesMovimientos;
         }
 

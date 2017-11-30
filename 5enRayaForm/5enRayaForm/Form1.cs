@@ -55,6 +55,17 @@ namespace _5enRayaForm
             e.Graphics.FillRectangle(Brushes.Yellow, 0,0,Width, Height);
             Casillero C = new Casillero();
             C.Dibujar(e.Graphics,game.Board,25,35,50,50);
+            if (game.IsOver)
+            {
+                if (game.Winner == null)
+                {
+                    label1.Text = "¡Empate!";
+                }
+                else
+                {
+                    label1.Text = string.Format("¡El ganador es {0}!", game.Winner.Name);
+                }
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)

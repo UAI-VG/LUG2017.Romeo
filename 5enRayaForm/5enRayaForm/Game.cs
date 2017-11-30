@@ -12,6 +12,7 @@ namespace CincoEnRaya.Model
         private Player[] players;
         private int turn = -1;
         private bool playing = false;
+
         public Game(Board board, Player[] players)
         {
             this.board = board;
