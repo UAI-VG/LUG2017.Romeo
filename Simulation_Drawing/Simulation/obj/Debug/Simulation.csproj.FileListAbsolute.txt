@@ -1,0 +1,9 @@
+C:\Users\sebas\Desktop\Simulation_Drawing\Simulation\bin\Debug\Simulation.exe.config
+C:\Users\sebas\Desktop\Simulation_Drawing\Simulation\bin\Debug\Simulation.exe
+C:\Users\sebas\Desktop\Simulation_Drawing\Simulation\bin\Debug\Simulation.pdb
+C:\Users\sebas\Desktop\Simulation_Drawing\Simulation\obj\Debug\Simulation.csprojResolveAssemblyReference.cache
+C:\Users\sebas\Desktop\Simulation_Drawing\Simulation\obj\Debug\Simulation.SimulationViewer.resources
+C:\Users\sebas\Desktop\Simulation_Drawing\Simulation\obj\Debug\Simulation.csproj.GenerateResource.cache
+C:\Users\sebas\Desktop\Simulation_Drawing\Simulation\obj\Debug\Simulation.csproj.CoreCompileInputs.cache
+C:\Users\sebas\Desktop\Simulation_Drawing\Simulation\obj\Debug\Simulation.exe
+C:\Users\sebas\Desktop\Simulation_Drawing\Simulation\obj\Debug\Simulation.pdb
