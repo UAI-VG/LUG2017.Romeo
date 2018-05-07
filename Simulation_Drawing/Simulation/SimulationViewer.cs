@@ -18,6 +18,8 @@ namespace Simulation
         private Dictionary<int, Scene> cache = new Dictionary<int, Scene>();
         bool check = false;
 
+        int begin = 0;
+        bool flag = false;
         public SimulationViewer()
         {
             InitializeComponent();
@@ -25,31 +27,34 @@ namespace Simulation
 
         private void SimulationViewer_Load(object sender, EventArgs e)
         {
-            SetStyle(ControlStyles.OptimizedDoubleBuffer 
-                | ControlStyles.UserPaint 
+            SetStyle(ControlStyles.OptimizedDoubleBuffer
+                | ControlStyles.UserPaint
                 | ControlStyles.AllPaintingInWmPaint, true);
-            
-                updateTimer.Enabled = true;
+
             InicializarCache(trackBar1.Value);
+            currentScene = InicializarCache(trackBar1.Value);
         }
 
+        public static int NewBegin = new int();
         int CalcularBegin(int frame)
         {
             if (frame == 0) return 0;
-            int begin = frame - 1;
 
-            if (cache.ContainsKey(begin))
+            if (cache.ContainsKey(frame))
             {
-                return begin;
+                return frame;
             }
             else
             {
-                CalcularBegin(begin);
+                return CalcularBegin(frame - 1);
             }
 
-            int newBegin = new int();
-            newBegin = begin;
-            return newBegin;
+            if (!flag)
+            {
+                NewBegin = frame - 1;
+                flag = true;
+            }
+            return NewBegin;
         }
 
         private Scene InicializarCache(int frame)
@@ -57,8 +62,7 @@ namespace Simulation
             if (cache.ContainsKey(frame)) return cache[frame];
             Scene scene = null;
             scene = new Scene(new SizeF(100, 100));
-           
-            int begin = 0;
+
 
             if (!check)
             {
@@ -81,8 +85,6 @@ namespace Simulation
             {
                 scene.Step();
             }
-
-            scene = cache[frame];
             return scene;
         }
 
@@ -138,7 +140,7 @@ namespace Simulation
 
         private void updateTimer_Tick(object sender, EventArgs e)
         {                
-            Refresh();        
+            Refresh();       
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
@@ -146,6 +148,12 @@ namespace Simulation
             currentScene = InicializarCache(trackBar1.Value);
             label1.Text = currentScene.ToString();
             label2.Text = trackBar1.Value.ToString();
+            label3.Text = cache.Count.ToString();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // trackBar1.Value += 1;      
         }
     }
 }
