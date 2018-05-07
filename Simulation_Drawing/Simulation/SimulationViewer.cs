@@ -47,7 +47,9 @@ namespace Simulation
                 CalcularBegin(begin);
             }
 
-            return begin;
+            int newBegin = new int();
+            newBegin = begin;
+            return newBegin;
         }
 
         private Scene InicializarCache(int frame)
