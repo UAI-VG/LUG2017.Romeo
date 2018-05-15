@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WolvesAndRabbitsSimulation.Engine
 {
-    public class GameObject
+    class GameObject
     {
         private Point position = new Point(0, 0);
         private double rotation = 0;

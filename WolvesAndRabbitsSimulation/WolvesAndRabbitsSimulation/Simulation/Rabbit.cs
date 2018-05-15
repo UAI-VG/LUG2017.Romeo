@@ -8,7 +8,7 @@ using WolvesAndRabbitsSimulation.Engine;
 
 namespace WolvesAndRabbitsSimulation.Simulation
 {
-    public class Rabbit : GameObject
+    class Rabbit : GameObject
     {
         private int DEATH_AGE = 1500;
         private int ADULTHOOD = 100;
@@ -37,7 +37,17 @@ namespace WolvesAndRabbitsSimulation.Simulation
 
         private void EatSomeGrass(World forest)
         {
-            Grass grass = forest.ObjectsAt(Position).Select(o => o as Grass).First(o => o != null);
+             //Grass grass = forest.ObjectsAt(Position).Select(o => o as Grass).First(o => o != null);
+           Grass grass = new Grass();
+
+            foreach (GameObject g in forest.GameObjects)
+            {
+                if (g.Position.X == this.Position.X && g.Position.Y == this.Position.Y && g is Grass && g != null)
+                {
+                    grass = (Grass)g;
+                }
+            }
+
             int amount = FOOD_CONSUMPTION * 2;
             if (grass.Growth < amount)
             {
@@ -50,24 +60,18 @@ namespace WolvesAndRabbitsSimulation.Simulation
         private void Breed(World forest)
         {
             if (age < ADULTHOOD || food < FOOD_TO_BREED) return;
-
-
-            foreach (Rabbit r in forest.rabbits)
+            if (forest.ObjectsAt(Position).Any(o => o is Rabbit && o != this))
             {
-                if (r.Position == this.Position && r != this)
+                for (int i = 0; i < MAX_CHILDREN; i++)
                 {
-                    for (int i = 0; i < MAX_CHILDREN; i++)
+                    if (forest.Random(1, 10) <= 10 * BREED_PROBABILITY)
                     {
-                        if (forest.Random(1, 10) <= 10 * BREED_PROBABILITY)
-                        {
-                            Rabbit bunny = new Rabbit();
-                            bunny.Position = Position;
-                            forest.Add(bunny, 'r');
-                        }
+                        Rabbit bunny = new Rabbit();
+                        bunny.Position = Position;
+                        forest.Add(bunny);
                     }
                 }
             }
-           
         }
 
         private void GrowOld(World forest)

@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace WolvesAndRabbitsSimulation.Engine
 {
-    public class World
+    class World
     {
         private Random rnd = new Random();
 
         private const int width = 255;
         private const int height = 255;
         private Size size = new Size(width, height);
-        private GameObject[] objects = new GameObject[0];
-        public List<GameObject> rabbits = new List<GameObject>();
+        private List<GameObject> objects = new List<GameObject>();
+
         public IEnumerable<GameObject> GameObjects
         {
             get
@@ -42,20 +42,14 @@ namespace WolvesAndRabbitsSimulation.Engine
             return rnd.Next(min, max);
         }
 
-        public void Add(GameObject obj, char letter)
+        public void Add(GameObject obj)
         {
-        
-            if (letter == 'r')
-            {
-                rabbits.Add(obj);
-            }
-
-            objects = objects.Concat(new GameObject[] { obj }).ToArray();
+            objects.Add(obj);
         }
 
         public void Remove(GameObject obj)
         {
-            objects = objects.Where(o => o != obj).ToArray();
+            objects.Remove(obj);
         }
 
         public virtual void Update()

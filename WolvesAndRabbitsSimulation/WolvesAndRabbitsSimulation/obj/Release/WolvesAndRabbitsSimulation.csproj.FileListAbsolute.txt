@@ -7,3 +7,4 @@ C:\Users\sebas\Desktop\WolvesAndRabbitsSimulation\WolvesAndRabbitsSimulation\obj
 C:\Users\sebas\Desktop\WolvesAndRabbitsSimulation\WolvesAndRabbitsSimulation\obj\Release\WolvesAndRabbitsSimulation.csproj.CoreCompileInputs.cache
 C:\Users\sebas\Desktop\WolvesAndRabbitsSimulation\WolvesAndRabbitsSimulation\obj\Release\WolvesAndRabbitsSimulation.exe
 C:\Users\sebas\Desktop\WolvesAndRabbitsSimulation\WolvesAndRabbitsSimulation\obj\Release\WolvesAndRabbitsSimulation.pdb
+C:\Users\sebas\Desktop\WolvesAndRabbitsSimulation\WolvesAndRabbitsSimulation\obj\Release\WolvesAndRabbitsSimulation.csprojAssemblyReference.cache

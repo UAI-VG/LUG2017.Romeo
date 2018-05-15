@@ -22,7 +22,6 @@ namespace WolvesAndRabbitsSimulation
         private long frameTime = 0;
         private string fileName;
         private Stopwatch stopwatch = new Stopwatch();
-        public static List<Rabbit> Rabbits;
 
         public Form1()
         {
@@ -65,7 +64,6 @@ namespace WolvesAndRabbitsSimulation
         private void updateTimer_Tick(object sender, EventArgs e)
         {
             Step();
-            textBox1.Text = world.rabbits.Count.ToString();
         }
 
         private void Step()
@@ -109,7 +107,7 @@ namespace WolvesAndRabbitsSimulation
                     Grass grass = new Grass();
                     grass.Position = new Point(x, y);
                     grass.Growth = world.Random(0, 50);
-                    world.Add(grass, 'g');
+                    world.Add(grass);
                 }
             }
         }
@@ -129,18 +127,13 @@ namespace WolvesAndRabbitsSimulation
                 {
                     rabbit.Position = new Point(rabbit.Position.X, 0);
                 }
-                world.Add(rabbit, 'r');
+                world.Add(rabbit);
             }
         }
 
         private void Form1_Click(object sender, EventArgs e)
         {
             Step();
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
